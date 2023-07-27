@@ -21,7 +21,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "cheshire-cat-api"
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 PYTHON_REQUIRES = ">=3.10"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0",
@@ -44,7 +44,7 @@ setup(
     include_package_data=True,
     long_description_content_type='text/markdown',
     long_description="""\
-    Customizable AI architecture  # noqa: E501
+    Customizable AI architecture
     """,
     package_data={"cheshire_cat_api": ["py.typed"]},
 )
