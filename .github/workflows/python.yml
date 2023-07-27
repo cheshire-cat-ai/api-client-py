@@ -5,7 +5,7 @@
 
 name: cheshire_cat_api Python package
 
-on: [push, pull_request, published]
+on: [push, pull_request]
 
 jobs:
   build:
