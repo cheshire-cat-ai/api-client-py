@@ -1,0 +1,401 @@
+# cheshire_cat_api.MemoryApi
+
+All URIs are relative to *http://localhost*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete_element_in_memory**](MemoryApi.md#delete_element_in_memory) | **DELETE** /memory/point/{collection_id}/{memory_id}/ | Delete Element In Memory
+[**get_collections**](MemoryApi.md#get_collections) | **GET** /memory/collections/ | Get Collections
+[**recall_memories_from_text**](MemoryApi.md#recall_memories_from_text) | **GET** /memory/recall/ | Recall Memories From Text
+[**wipe_collections**](MemoryApi.md#wipe_collections) | **DELETE** /memory/wipe-collections/ | Wipe Collections
+[**wipe_conversation_history**](MemoryApi.md#wipe_conversation_history) | **DELETE** /memory/working-memory/conversation-history/ | Wipe Conversation History
+[**wipe_single_collection**](MemoryApi.md#wipe_single_collection) | **DELETE** /memory/collections/{collection_id} | Wipe Single Collection
+
+
+# **delete_element_in_memory**
+> object delete_element_in_memory(collection_id, memory_id)
+
+Delete Element In Memory
+
+Delete specific element in memory.
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.MemoryApi(api_client)
+    collection_id = 'collection_id_example' # str | 
+    memory_id = 'memory_id_example' # str | 
+
+    try:
+        # Delete Element In Memory
+        api_response = api_instance.delete_element_in_memory(collection_id, memory_id)
+        print("The response of MemoryApi->delete_element_in_memory:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MemoryApi->delete_element_in_memory: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **str**|  | 
+ **memory_id** | **str**|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_collections**
+> object get_collections()
+
+Get Collections
+
+Get list of available collections
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.MemoryApi(api_client)
+
+    try:
+        # Get Collections
+        api_response = api_instance.get_collections()
+        print("The response of MemoryApi->get_collections:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MemoryApi->get_collections: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recall_memories_from_text**
+> object recall_memories_from_text(text, k=k, user_id=user_id)
+
+Recall Memories From Text
+
+Search k memories similar to given text.
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.MemoryApi(api_client)
+    text = 'text_example' # str | Find memories similar to this text.
+    k = 100 # int | How many memories to return. (optional) (default to 100)
+    user_id = 'user' # str | User id. (optional) (default to 'user')
+
+    try:
+        # Recall Memories From Text
+        api_response = api_instance.recall_memories_from_text(text, k=k, user_id=user_id)
+        print("The response of MemoryApi->recall_memories_from_text:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MemoryApi->recall_memories_from_text: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **text** | **str**| Find memories similar to this text. | 
+ **k** | **int**| How many memories to return. | [optional] [default to 100]
+ **user_id** | **str**| User id. | [optional] [default to &#39;user&#39;]
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **wipe_collections**
+> object wipe_collections()
+
+Wipe Collections
+
+Delete and create all collections
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.MemoryApi(api_client)
+
+    try:
+        # Wipe Collections
+        api_response = api_instance.wipe_collections()
+        print("The response of MemoryApi->wipe_collections:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MemoryApi->wipe_collections: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **wipe_conversation_history**
+> object wipe_conversation_history()
+
+Wipe Conversation History
+
+Delete conversation history from working memory
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.MemoryApi(api_client)
+
+    try:
+        # Wipe Conversation History
+        api_response = api_instance.wipe_conversation_history()
+        print("The response of MemoryApi->wipe_conversation_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MemoryApi->wipe_conversation_history: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **wipe_single_collection**
+> object wipe_single_collection(collection_id)
+
+Wipe Single Collection
+
+Delete and recreate a collection
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.MemoryApi(api_client)
+    collection_id = 'collection_id_example' # str | 
+
+    try:
+        # Wipe Single Collection
+        api_response = api_instance.wipe_single_collection(collection_id)
+        print("The response of MemoryApi->wipe_single_collection:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MemoryApi->wipe_single_collection: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collection_id** | **str**|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
