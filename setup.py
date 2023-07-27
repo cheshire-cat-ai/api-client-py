@@ -21,13 +21,14 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "cheshire-cat-api"
-VERSION = "1.0.0"
-PYTHON_REQUIRES = ">=3.7"
+VERSION = "0.0.1"
+PYTHON_REQUIRES = ">=3.10"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0",
     "python-dateutil",
     "pydantic >= 1.10.5, < 2",
-    "aenum"
+    "aenum",
+    "websocket-client >=1.6.1"
 ]
 
 setup(
