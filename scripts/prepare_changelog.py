@@ -1,7 +1,7 @@
 from datetime import datetime
 from pathlib import Path
 
-from ccat_api.version import VERSION
+from cheshire_cat_api import __version__
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
         line = lines[i]
         if line.startswith("## Unreleased"):
             insert_index = i + 1
-        elif line.startswith(f"## [v{VERSION}]"):
+        elif line.startswith(f"## [v{__version__}]"):
             print("CHANGELOG already up-to-date")
             return
         elif line.startswith("## [v"):
@@ -27,7 +27,7 @@ def main():
     lines.insert(insert_index, "\n")
     lines.insert(
         insert_index + 1,
-        f"## [v{VERSION}](https://github.com/cheshire-cat-ai/ccat-api-py/releases/tag/v{VERSION}) - "
+        f"## [v{__version__}](https://github.com/cheshire-cat-ai/ccat-api-py/releases/tag/v{__version__}) - "
         f"{datetime.now().strftime('%Y-%m-%d')}\n",
     )
 
