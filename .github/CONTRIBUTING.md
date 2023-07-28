@@ -121,13 +121,9 @@ When you're ready to contribute code to address an open issue, please follow the
 
     Our continuous integration (CI) testing runs [a number of checks](https://github.com/cheshire-cat-ai/cheshire-cat-api/actions) for each pull request on [GitHub Actions](https://github.com/features/actions). You can run most of these tests locally, which is something you should do *before* opening a PR to help speed up the review process and make it easier for us.
 
-    Our CI also uses [`flake8`](https://github.com/cheshire-cat-ai/cheshire-cat-api/tree/main/tests) to lint the code base and [`mypy`](http://mypy-lang.org/) for type-checking. You should run both of these next with
+    Our CI also uses [`flake8`](https://github.com/cheshire-cat-ai/cheshire-cat-api/tree/main/tests) to lint the code base. You should run it with
 
         flake8 .
-
-    and
-
-        mypy .
 
     We also strive to maintain high test coverage, so most contributions should include additions to [the unit tests](https://github.com/cheshire-cat-ai/cheshire-cat-api/tree/main/tests). These tests are run with [`pytest`](https://docs.pytest.org/en/latest/), which you can use to locally run any test modules that you've added or changed.
 
