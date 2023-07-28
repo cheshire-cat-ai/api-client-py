@@ -13,6 +13,7 @@ if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]
     echo "Creating new git tag $TAG"
     git tag "$TAG" -m "$TAG"
     git push origin "$TAG"
+    gh release create "$TAG"
 else
     echo "Cancelled"
     exit 1
