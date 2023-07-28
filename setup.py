@@ -21,7 +21,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "cheshire-cat-api"
-VERSION = "0.0.02"
+VERSION = "0.2.0"
 PYTHON_REQUIRES = ">=3.10"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0",

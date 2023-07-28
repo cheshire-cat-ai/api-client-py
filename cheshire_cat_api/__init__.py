@@ -14,7 +14,7 @@
 """
 
 
-__version__ = "0.0.02"
+__version__ = "0.2.0"
 
 from .cat_client import CatClient
 

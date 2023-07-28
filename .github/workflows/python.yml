@@ -41,10 +41,10 @@ jobs:
 #        uses: pypa/gh-action-pypi-publish@release/v1
 #        with:
 #          password: ${{ secrets.PYPI_API_TOKEN }}
-      - name: Build a binary wheel
-        run: |
-          python setup.py sdist bdist_wheel
-      - name: Publish distribution 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+#      - name: Build a binary wheel
+#        run: |
+#          python setup.py sdist bdist_wheel
+#      - name: Publish distribution 📦 to PyPI
+#        uses: pypa/gh-action-pypi-publish@master
+#        with:
+#          password: ${{ secrets.PYPI_API_TOKEN }}
