@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cheshire-cat-api"
-version = "0.0.36"
+version = "0.0.37"
 description = "😸 Cheshire-Cat API"
 authors = ["Cheshire Cat AI"]
 license = "GPL-3"
