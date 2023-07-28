@@ -40,18 +40,6 @@ jobs:
       - name: Install dependencies
         run: poetry install
 
-  publish:
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: [ 3.10 ]
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Run image
         uses: abatilo/actions-poetry@v2.0.0
       - name: Publish
@@ -60,3 +48,4 @@ jobs:
         run: |
           poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build
+
