@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [v0.0.36](https://github.com/cheshire-cat-ai/ccat-api-py/releases/tag/v0.0.36) - 2023-07-28
+
 ## [v0.0.35](https://github.com/cheshire-cat-ai/ccat-api-py/releases/tag/v0.0.35) - 2023-07-28
 
 ## [v0.0.34](https://github.com/cheshire-cat-ai/ccat-api-py/releases/tag/v0.0.34) - 2023-07-28

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cheshire-cat-api"
-version = "0"
+version = "0.0.36"
 description = "😸 Cheshire-Cat API"
 authors = ["Cheshire Cat AI"]
 license = "GPL-3"
@@ -31,8 +31,6 @@ flake8 = ">=4.0.0"
 requires = ["poetry-core>=1.2.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry-version-plugin]
-source = "init"
 
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
