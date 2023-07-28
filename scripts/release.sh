@@ -17,3 +17,6 @@ else
     echo "Cancelled"
     exit 1
 fi
+
+# Command to delete all local tags
+# git tag | xargs git tag -d
