@@ -14,9 +14,7 @@
 """
 
 
-__version__ = "0.0.37"
-
-from .cat_client import CatClient
+__version__ = "1.0.0"
 
 # import apis into sdk package
 from cheshire_cat_api.api.memory_api import MemoryApi

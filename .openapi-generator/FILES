@@ -45,17 +45,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_body_upload_url.py
-test/test_http_validation_error.py
-test/test_location_inner.py
-test/test_memory_api.py
-test/test_plugins_api.py
-test/test_rabbit_hole_api.py
-test/test_setting_body.py
-test/test_settings_embedder_api.py
-test/test_settings_general_api.py
-test/test_settings_large_language_model_api.py
-test/test_settings_prompt_api.py
-test/test_status_api.py
-test/test_validation_error.py
 tox.ini
