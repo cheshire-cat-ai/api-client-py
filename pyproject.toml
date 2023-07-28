@@ -1,13 +1,23 @@
 [tool.poetry]
 name = "cheshire_cat_api"
-version = "0.0.4"
-description = "😸 Cheshire-Cat API"
-authors = ["OpenAPI Generator Community <team@openapitools.org>"]
-license = "NoLicense"
+version = "0.2.0"
+description = "😸 Cheshire-Cat API Client"
+authors = ["Chesire Cat AI"]
+maintainers = [
+    "Nicola Corbellini"
+]
+homepage = "https://cheshirecat.ai/"
+license = "GPL-3.0-only"
 readme = "README.md"
-repository = "https://github.com/nicola-corbellini/test-api"
-keywords = ["OpenAPI", "OpenAPI-Generator", "😸 Cheshire-Cat API"]
+repository = "https://github.com/cheshire-cat-ai/cheshire-cat-api"
+keywords = ["OpenAPI", "Cheshire-Cat", "LLM", "Open Source"]
 include = ["cheshire_cat_api/py.typed"]
+classifiers = [
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Framework :: FastAPI",
+    "Development Status :: 3 - Alpha"
+]
+# ADD DOCUMENTATION WITH URL
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -22,6 +32,7 @@ websocket-client= ">=1.6.1"
 pytest = ">=7.2.1"
 tox = ">=3.9.0"
 flake8 = ">=4.0.0"
+toml = ">=0.10.2"
 
 [build-system]
 requires = ["setuptools"]

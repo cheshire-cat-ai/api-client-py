@@ -14,7 +14,7 @@
 """
 
 
-__version__ = "0.0.61"
+__version__ = "0.2.0"
 
 from cheshire_cat_api.cat_client import CatClient
 from cheshire_cat_api.utils import Settings, WebSocketSettings

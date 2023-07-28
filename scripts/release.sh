@@ -2,7 +2,7 @@
 
 set -e
 
-TAG=$(python -c 'from cheshire_cat_api import __version__; print("v" + __version__)')
+TAG=$(python -c 'import toml; t=toml.load("../pyproject.toml"); print(t["tool"]["poetry"]["version"])')
 
 read -p "Creating new release for $TAG. Do you want to continue? [Y/n] " prompt
 
