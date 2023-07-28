@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cheshire-cat-api"
-version = "0.0.31"
+#version = "0.0.31"
 description = "😸 Cheshire-Cat API"
 authors = ["Cheshire Cat AI"]
 license = "GPL-3"
@@ -8,6 +8,7 @@ readme = "README.md"
 repository = "https://github.com/nicola-corbellini/test-api"
 keywords = ["OpenAPI", "OpenAPI-Generator", "😸 Cheshire-Cat API"]
 include = ["cheshire_cat_api/py.typed"]
+dynamic = ["version"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -24,8 +25,11 @@ tox = ">=3.9.0"
 flake8 = ">=4.0.0"
 
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "poetry-core>=1.0.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.pylint.'MESSAGES CONTROL']
 extension-pkg-whitelist = "pydantic"
+
+[tool.setuptools.dynamic]
+version = {attr = "cheshire_cat_api.__version__"}
