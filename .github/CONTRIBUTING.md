@@ -6,10 +6,10 @@ Thanks for considering contributing! Please read this document to learn the vari
 
 ### Did you find a bug?
 
-First, do [a quick search](https://github.com/cheshire-cat-ai/ccat-api-py/issues) to see whether your issue has already been reported.
+First, do [a quick search](https://github.com/cheshire-cat-ai/cheshire-cat-api/issues) to see whether your issue has already been reported.
 If your issue has already been reported, please comment on the existing issue.
 
-Otherwise, open [a new GitHub issue](https://github.com/cheshire-cat-ai/ccat-api-py/issues).  Be sure to include a clear title
+Otherwise, open [a new GitHub issue](https://github.com/cheshire-cat-ai/cheshire-cat-api/issues).  Be sure to include a clear title
 and description.  The description should include as much relevant information as possible.  The description should
 explain how to reproduce the erroneous behavior as well as the behavior you expect to see.  Ideally you would include a
 code sample or an executable test case demonstrating the expected behavior.
@@ -21,7 +21,7 @@ We use GitHub issues to track feature requests. Before you create a feature requ
 * Make sure you have a clear idea of the enhancement you would like. If you have a vague idea, consider discussing
 it first on a GitHub issue.
 * Check the documentation to make sure your feature does not already exist.
-* Do [a quick search](https://github.com/cheshire-cat-ai/ccat-api-py/issues) to see whether your feature has already been suggested.
+* Do [a quick search](https://github.com/cheshire-cat-ai/cheshire-cat-api/issues) to see whether your feature has already been suggested.
 
 When creating your request, please:
 
@@ -41,31 +41,31 @@ When you're ready to contribute code to address an open issue, please follow the
 
     Then clone your fork locally with
 
-        git clone https://github.com/USERNAME/ccat-api-py.git
+        git clone https://github.com/USERNAME/cheshire-cat-api.git
 
     or 
 
-        git clone git@github.com:USERNAME/ccat-api-py.git
+        git clone git@github.com:USERNAME/cheshire-cat-api.git
 
-    At this point the local clone of your fork only knows that it came from *your* repo, github.com/USERNAME/ccat-api-py.git, but doesn't know anything the *main* repo, [https://github.com/cheshire-cat-ai/ccat-api-py.git](https://github.com/cheshire-cat-ai/ccat-api-py). You can see this by running
+    At this point the local clone of your fork only knows that it came from *your* repo, github.com/USERNAME/cheshire-cat-api.git, but doesn't know anything the *main* repo, [https://github.com/cheshire-cat-ai/cheshire-cat-api.git](https://github.com/cheshire-cat-ai/cheshire-cat-api). You can see this by running
 
         git remote -v
 
     which will output something like this:
 
-        origin https://github.com/USERNAME/ccat-api-py.git (fetch)
-        origin https://github.com/USERNAME/ccat-api-py.git (push)
+        origin https://github.com/USERNAME/cheshire-cat-api.git (fetch)
+        origin https://github.com/USERNAME/cheshire-cat-api.git (push)
 
-    This means that your local clone can only track changes from your fork, but not from the main repo, and so you won't be able to keep your fork up-to-date with the main repo over time. Therefore you'll need to add another "remote" to your clone that points to [https://github.com/cheshire-cat-ai/ccat-api-py.git](https://github.com/cheshire-cat-ai/ccat-api-py). To do this, run the following:
+    This means that your local clone can only track changes from your fork, but not from the main repo, and so you won't be able to keep your fork up-to-date with the main repo over time. Therefore you'll need to add another "remote" to your clone that points to [https://github.com/cheshire-cat-ai/cheshire-cat-api.git](https://github.com/cheshire-cat-ai/cheshire-cat-api). To do this, run the following:
 
-        git remote add upstream https://github.com/cheshire-cat-ai/ccat-api-py.git
+        git remote add upstream https://github.com/cheshire-cat-ai/cheshire-cat-api.git
 
     Now if you do `git remote -v` again, you'll see
 
-        origin https://github.com/USERNAME/ccat-api-py.git (fetch)
-        origin https://github.com/USERNAME/ccat-api-py.git (push)
-        upstream https://github.com/cheshire-cat-ai/ccat-api-py.git (fetch)
-        upstream https://github.com/cheshire-cat-ai/ccat-api-py.git (push)
+        origin https://github.com/USERNAME/cheshire-cat-api.git (fetch)
+        origin https://github.com/USERNAME/cheshire-cat-api.git (push)
+        upstream https://github.com/cheshire-cat-ai/cheshire-cat-api.git (fetch)
+        upstream https://github.com/cheshire-cat-ai/cheshire-cat-api.git (push)
 
     Finally, you'll need to create a Python 3 virtual environment suitable for working on this project. There a number of tools out there that making working with virtual environments easier.
     The most direct way is with the [`venv` module](https://docs.python.org/3.7/library/venv.html) in the standard library, but if you're new to Python or you don't already have a recent Python 3 version installed on your machine,
@@ -77,7 +77,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     Then you can create and activate a new Python environment by running:
 
-        conda create -n ccat-api python=3.9
+        conda create -n ccat-api python=3.10
         conda activate ccat-api
 
     Once your virtual environment is activated, you can install your local clone in "editable mode" with
@@ -93,7 +93,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     <details><summary>Expand details 👇</summary><br/>
 
-    Once you've added an "upstream" remote pointing to [https://github.com/allenai/python-package-temlate.git](https://github.com/cheshire-cat-ai/ccat-api-py), keeping your fork up-to-date is easy:
+    Once you've added an "upstream" remote pointing to [this repo](https://github.com/cheshire-cat-ai/cheshire-cat-api), keeping your fork up-to-date is easy:
 
         git checkout main  # if not already on main
         git pull --rebase upstream main
@@ -119,9 +119,9 @@ When you're ready to contribute code to address an open issue, please follow the
 
     <details><summary>Expand details 👇</summary><br/>
 
-    Our continuous integration (CI) testing runs [a number of checks](https://github.com/cheshire-cat-ai/ccat-api-py/actions) for each pull request on [GitHub Actions](https://github.com/features/actions). You can run most of these tests locally, which is something you should do *before* opening a PR to help speed up the review process and make it easier for us.
+    Our continuous integration (CI) testing runs [a number of checks](https://github.com/cheshire-cat-ai/cheshire-cat-api/actions) for each pull request on [GitHub Actions](https://github.com/features/actions). You can run most of these tests locally, which is something you should do *before* opening a PR to help speed up the review process and make it easier for us.
 
-    Our CI also uses [`flake8`](https://github.com/cheshire-cat-ai/ccat-api-py/tree/main/tests) to lint the code base and [`mypy`](http://mypy-lang.org/) for type-checking. You should run both of these next with
+    Our CI also uses [`flake8`](https://github.com/cheshire-cat-ai/cheshire-cat-api/tree/main/tests) to lint the code base and [`mypy`](http://mypy-lang.org/) for type-checking. You should run both of these next with
 
         flake8 .
 
@@ -129,15 +129,15 @@ When you're ready to contribute code to address an open issue, please follow the
 
         mypy .
 
-    We also strive to maintain high test coverage, so most contributions should include additions to [the unit tests](https://github.com/cheshire-cat-ai/ccat-api-py/tree/main/tests). These tests are run with [`pytest`](https://docs.pytest.org/en/latest/), which you can use to locally run any test modules that you've added or changed.
+    We also strive to maintain high test coverage, so most contributions should include additions to [the unit tests](https://github.com/cheshire-cat-ai/cheshire-cat-api/tree/main/tests). These tests are run with [`pytest`](https://docs.pytest.org/en/latest/), which you can use to locally run any test modules that you've added or changed.
 
-    For example, if you've fixed a bug in `ccat_api/a/b.py`, you can run the tests specific to that module with
+    For example, if you've fixed a bug in `cheshire-cat-api/a/b.py`, you can run the tests specific to that module with
 
         pytest -v tests/a/b_test.py
 
     To check the code coverage locally in this example, you could run
 
-        pytest -v --cov ccat_api.a.b tests/a/b_test.py
+        pytest -v --cov cheshire-cat-api.a.b tests/a/b_test.py
 
     If your contribution involves additions to any public part of the API, we require that you write docstrings
     for each function, method, class, or module that you add.
@@ -148,9 +148,9 @@ When you're ready to contribute code to address an open issue, please follow the
 
     If the build fails, it's most likely due to small formatting issues. If the error message isn't clear, feel free to comment on this in your pull request.
 
-    And finally, please update the [CHANGELOG](https://github.com/cheshire-cat-ai/ccat-api-py/blob/main/CHANGELOG.md) with notes on your contribution in the "Unreleased" section at the top.
+    And finally, please update the [CHANGELOG](https://github.com/cheshire-cat-ai/cheshire-cat-api/blob/main/CHANGELOG.md) with notes on your contribution in the "Unreleased" section at the top.
 
-    After all of the above checks have passed, you can now open [a new GitHub pull request](https://github.com/cheshire-cat-ai/ccat-api-py/pulls).
+    After all of the above checks have passed, you can now open [a new GitHub pull request](https://github.com/cheshire-cat-ai/cheshire-cat-api/pulls).
     Make sure you have a clear description of the problem and the solution, and include a link to relevant issues.
 
     We look forward to reviewing your PR!
@@ -159,6 +159,4 @@ When you're ready to contribute code to address an open issue, please follow the
 
 ### Writing docstrings
 
-We use [Sphinx](https://www.sphinx-doc.org/en/master/index.html) to build our API docs, which automatically parses all docstrings
-of public classes and methods using the [autodoc](https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html) extension.
-Please refer to autodoc's documentation to learn about the docstring syntax.
+TODO

@@ -27,7 +27,7 @@ def main():
     lines.insert(insert_index, "\n")
     lines.insert(
         insert_index + 1,
-        f"## [v{__version__}](https://github.com/cheshire-cat-ai/ccat-api-py/releases/tag/v{__version__}) - "
+        f"## [v{__version__}](https://github.com/cheshire-cat-ai/cheshire-cat-api/releases/tag/v{__version__}) - "
         f"{datetime.now().strftime('%Y-%m-%d')}\n",
     )
 

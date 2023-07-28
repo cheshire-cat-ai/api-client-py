@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """
 
-
 import re  # noqa: F401
 import io
 import warnings
@@ -46,7 +45,13 @@ class RabbitHoleApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def upload_file(self, file : Union[StrictBytes, StrictStr], chunk_size : Annotated[Optional[StrictInt], Field(description="Maximum length of each chunk after the document is split (in characters)")] = None, chunk_overlap : Annotated[Optional[StrictInt], Field(description="Chunk overlap (in characters)")] = None, summary : Annotated[Optional[StrictBool], Field(description="Enables call to summary hook for this file")] = None, **kwargs) -> object:  # noqa: E501
+    def upload_file(self, file: Union[StrictBytes, StrictStr], chunk_size: Annotated[Optional[StrictInt], Field(
+        description="Maximum length of each chunk after the document is split (in characters)")] = None,
+                    chunk_overlap: Annotated[
+                        Optional[StrictInt], Field(description="Chunk overlap (in characters)")] = None,
+                    summary: Annotated[
+                        Optional[StrictBool], Field(description="Enables call to summary hook for this file")] = None,
+                    **kwargs) -> object:  # noqa: E501
         """Upload File  # noqa: E501
 
         Upload a file containing text (.txt, .md, .pdf, etc.). File content will be extracted and segmented into chunks. Chunks will be then vectorized and stored into documents memory.  # noqa: E501
@@ -77,11 +82,19 @@ class RabbitHoleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the upload_file_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+            raise ValueError(
+                "Error! Please call the upload_file_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
         return self.upload_file_with_http_info(file, chunk_size, chunk_overlap, summary, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def upload_file_with_http_info(self, file : Union[StrictBytes, StrictStr], chunk_size : Annotated[Optional[StrictInt], Field(description="Maximum length of each chunk after the document is split (in characters)")] = None, chunk_overlap : Annotated[Optional[StrictInt], Field(description="Chunk overlap (in characters)")] = None, summary : Annotated[Optional[StrictBool], Field(description="Enables call to summary hook for this file")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def upload_file_with_http_info(self, file: Union[StrictBytes, StrictStr], chunk_size: Annotated[
+        Optional[StrictInt], Field(
+            description="Maximum length of each chunk after the document is split (in characters)")] = None,
+                                   chunk_overlap: Annotated[
+                                       Optional[StrictInt], Field(description="Chunk overlap (in characters)")] = None,
+                                   summary: Annotated[Optional[StrictBool], Field(
+                                       description="Enables call to summary hook for this file")] = None,
+                                   **kwargs) -> ApiResponse:  # noqa: E501
         """Upload File  # noqa: E501
 
         Upload a file containing text (.txt, .md, .pdf, etc.). File content will be extracted and segmented into chunks. Chunks will be then vectorized and stored into documents memory.  # noqa: E501
@@ -186,10 +199,10 @@ class RabbitHoleApi(object):
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['multipart/form-data']))
+                                          self.api_client.select_header_content_type(
+                                              ['multipart/form-data']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = []  # noqa: E501
@@ -217,7 +230,7 @@ class RabbitHoleApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def upload_memory(self, file : Union[StrictBytes, StrictStr], **kwargs) -> object:  # noqa: E501
+    def upload_memory(self, file: Union[StrictBytes, StrictStr], **kwargs) -> object:  # noqa: E501
         """Upload Memory  # noqa: E501
 
         Upload a memory json file to the cat memory  # noqa: E501
@@ -242,11 +255,12 @@ class RabbitHoleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the upload_memory_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+            raise ValueError(
+                "Error! Please call the upload_memory_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
         return self.upload_memory_with_http_info(file, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def upload_memory_with_http_info(self, file : Union[StrictBytes, StrictStr], **kwargs) -> ApiResponse:  # noqa: E501
+    def upload_memory_with_http_info(self, file: Union[StrictBytes, StrictStr], **kwargs) -> ApiResponse:  # noqa: E501
         """Upload Memory  # noqa: E501
 
         Upload a memory json file to the cat memory  # noqa: E501
@@ -333,10 +347,10 @@ class RabbitHoleApi(object):
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['multipart/form-data']))
+                                          self.api_client.select_header_content_type(
+                                              ['multipart/form-data']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = []  # noqa: E501
@@ -364,7 +378,7 @@ class RabbitHoleApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def upload_url(self, body_upload_url : BodyUploadUrl, **kwargs) -> object:  # noqa: E501
+    def upload_url(self, body_upload_url: BodyUploadUrl, **kwargs) -> object:  # noqa: E501
         """Upload Url  # noqa: E501
 
         Upload a url. Website content will be extracted and segmented into chunks. Chunks will be then vectorized and stored into documents memory.  # noqa: E501
@@ -389,11 +403,12 @@ class RabbitHoleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            raise ValueError("Error! Please call the upload_url_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+            raise ValueError(
+                "Error! Please call the upload_url_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
         return self.upload_url_with_http_info(body_upload_url, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def upload_url_with_http_info(self, body_upload_url : BodyUploadUrl, **kwargs) -> ApiResponse:  # noqa: E501
+    def upload_url_with_http_info(self, body_upload_url: BodyUploadUrl, **kwargs) -> ApiResponse:  # noqa: E501
         """Upload Url  # noqa: E501
 
         Upload a url. Website content will be extracted and segmented into chunks. Chunks will be then vectorized and stored into documents memory.  # noqa: E501
@@ -480,10 +495,10 @@ class RabbitHoleApi(object):
 
         # set the HTTP header `Content-Type`
         _content_types_list = _params.get('_content_type',
-            self.api_client.select_header_content_type(
-                ['application/json']))
+                                          self.api_client.select_header_content_type(
+                                              ['application/json']))
         if _content_types_list:
-                _header_params['Content-Type'] = _content_types_list
+            _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = []  # noqa: E501

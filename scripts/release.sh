@@ -7,12 +7,12 @@ TAG=$(python -c 'from cheshire_cat_api import __version__; print("v" + __version
 read -p "Creating new release for $TAG. Do you want to continue? [Y/n] " prompt
 
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]; then
-    python scripts/prepare_changelog.py
+#    python scripts/prepare_changelog.py
     git add -A
     git commit -m "Bump version to $TAG for release" || true && git push
     echo "Creating new git tag $TAG"
     git tag "$TAG" -m "$TAG"
-    git push --tags
+    git release "$TAG"
 else
     echo "Cancelled"
     exit 1

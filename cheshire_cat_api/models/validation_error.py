@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
 from cheshire_cat_api.models.location_inner import LocationInner
+
 
 class ValidationError(BaseModel):
     """
@@ -79,4 +78,3 @@ class ValidationError(BaseModel):
             "type": obj.get("type")
         })
         return _obj
-

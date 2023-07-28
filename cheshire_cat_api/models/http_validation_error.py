@@ -11,16 +11,15 @@
     Do not edit the class manually.
 """
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import List, Optional
 from pydantic import BaseModel, conlist
 from cheshire_cat_api.models.validation_error import ValidationError
+
 
 class HTTPValidationError(BaseModel):
     """
@@ -72,7 +71,7 @@ class HTTPValidationError(BaseModel):
             return HTTPValidationError.parse_obj(obj)
 
         _obj = HTTPValidationError.parse_obj({
-            "detail": [ValidationError.from_dict(_item) for _item in obj.get("detail")] if obj.get("detail") is not None else None
+            "detail": [ValidationError.from_dict(_item) for _item in obj.get("detail")] if obj.get(
+                "detail") is not None else None
         })
         return _obj
-

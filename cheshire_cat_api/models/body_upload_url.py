@@ -11,22 +11,22 @@
     Do not edit the class manually.
 """
 
-
 from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
 
-
 from typing import Optional
 from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+
 
 class BodyUploadUrl(BaseModel):
     """
     BodyUploadUrl
     """
     url: StrictStr = Field(..., description="URL of the website to which you want to save the content")
-    chunk_size: Optional[StrictInt] = Field(400, description="Maximum length of each chunk after the document is split (in characters)")
+    chunk_size: Optional[StrictInt] = Field(400,
+                                            description="Maximum length of each chunk after the document is split (in characters)")
     chunk_overlap: Optional[StrictInt] = Field(100, description="Chunk overlap (in characters)")
     summary: Optional[StrictBool] = Field(False, description="Enables call to summary hook for this website")
     __properties = ["url", "chunk_size", "chunk_overlap", "summary"]
@@ -73,4 +73,3 @@ class BodyUploadUrl(BaseModel):
             "summary": obj.get("summary") if obj.get("summary") is not None else False
         })
         return _obj
-

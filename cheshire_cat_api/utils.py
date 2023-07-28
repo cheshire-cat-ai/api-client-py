@@ -6,6 +6,7 @@ from cheshire_cat_api.api import (
 
 class CatAPI:
     """"The class to instantiate the Cat API endpoints"""
+
     def __init__(self, client: ApiClient):
         self.memory = MemoryApi(client)
         self.plugins = PluginsApi(client)
@@ -31,6 +32,7 @@ class WebSocketSettings:
         self.delay = 5000
         # The function to call after failing to reconnect
         self.on_failed = None
+
 
 class Settings:
     """

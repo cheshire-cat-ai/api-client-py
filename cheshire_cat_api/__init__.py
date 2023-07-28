@@ -16,6 +16,9 @@
 
 __version__ = "0.0.61"
 
+from cheshire_cat_api.cat_client import CatClient
+from cheshire_cat_api.utils import Settings, WebSocketSettings
+
 # import apis into sdk package
 from cheshire_cat_api.api.memory_api import MemoryApi
 from cheshire_cat_api.api.plugins_api import PluginsApi
