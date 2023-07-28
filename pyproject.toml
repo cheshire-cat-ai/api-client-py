@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "cheshire-cat-api"
-version = "0.0.3"
+version = "0.0.31"
 description = "😸 Cheshire-Cat API"
-authors = ["OpenAPI Generator Community <team@openapitools.org>"]
-license = "NoLicense"
+authors = ["Cheshire Cat AI"]
+license = "GPL-3"
 readme = "README.md"
 repository = "https://github.com/nicola-corbellini/test-api"
 keywords = ["OpenAPI", "OpenAPI-Generator", "😸 Cheshire-Cat API"]
