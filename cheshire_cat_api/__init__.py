@@ -14,7 +14,7 @@
 """
 
 
-__version__ = "0.0.1"
+__version__ = "0.0.4"
 
 # import apis into sdk package
 from cheshire_cat_api.api.memory_api import MemoryApi
