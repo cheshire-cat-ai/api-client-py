@@ -15,7 +15,7 @@
 import unittest
 
 import cheshire_cat_api
-from cheshire_cat_api.api.settings_prompt_api import SettingsPromptApi  # noqa: E501
+from cheshire_cat_api.api.prompt_api import PromptApi  # noqa: E501
 from cheshire_cat_api.rest import ApiException
 
 

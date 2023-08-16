@@ -15,7 +15,7 @@
 import unittest
 
 import cheshire_cat_api
-from cheshire_cat_api.api.settings_large_language_model_api import SettingsLargeLanguageModelApi  # noqa: E501
+from cheshire_cat_api.api.large_language_model_api import LargeLanguageModelApi  # noqa: E501
 from cheshire_cat_api.rest import ApiException
 
 

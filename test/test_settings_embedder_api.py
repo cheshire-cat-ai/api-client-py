@@ -15,7 +15,7 @@
 import unittest
 
 import cheshire_cat_api
-from cheshire_cat_api.api.settings_embedder_api import SettingsEmbedderApi  # noqa: E501
+from cheshire_cat_api.api.embedder_api import EmbedderApi  # noqa: E501
 from cheshire_cat_api.rest import ApiException
 
 
