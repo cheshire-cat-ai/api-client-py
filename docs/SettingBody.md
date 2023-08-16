@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**value** | **object** |  | 
+**value** | [**Value**](Value.md) |  | 
 **category** | **str** |  | [optional] 
 
 ## Example

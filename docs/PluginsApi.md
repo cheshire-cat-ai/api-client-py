@@ -5,10 +5,12 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_plugin**](PluginsApi.md#delete_plugin) | **DELETE** /plugins/{plugin_id} | Delete Plugin
+[**get_available_plugins**](PluginsApi.md#get_available_plugins) | **GET** /plugins/ | Get Available Plugins
 [**get_plugin_details**](PluginsApi.md#get_plugin_details) | **GET** /plugins/{plugin_id} | Get Plugin Details
 [**get_plugin_settings**](PluginsApi.md#get_plugin_settings) | **GET** /plugins/settings/{plugin_id} | Get Plugin Settings
+[**get_plugins_settings**](PluginsApi.md#get_plugins_settings) | **GET** /plugins/settings/ | Get Plugins Settings
 [**install_plugin**](PluginsApi.md#install_plugin) | **POST** /plugins/upload/ | Install Plugin
-[**list_available_plugins**](PluginsApi.md#list_available_plugins) | **GET** /plugins/ | List Available Plugins
+[**install_plugin_from_registry**](PluginsApi.md#install_plugin_from_registry) | **POST** /plugins/upload/registry | Install Plugin From Registry
 [**toggle_plugin**](PluginsApi.md#toggle_plugin) | **PUT** /plugins/toggle/{plugin_id} | Toggle Plugin
 [**upsert_plugin_settings**](PluginsApi.md#upsert_plugin_settings) | **PUT** /plugins/settings/{plugin_id} | Upsert Plugin Settings
 
@@ -52,6 +54,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -76,6 +79,68 @@ No authorization required
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_available_plugins**
+> object get_available_plugins()
+
+Get Available Plugins
+
+List available plugins
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.PluginsApi(api_client)
+
+    try:
+        # Get Available Plugins
+        api_response = api_instance.get_available_plugins()
+        print("The response of PluginsApi->get_available_plugins:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PluginsApi->get_available_plugins: %s\n" % e)
+```
+
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -116,6 +181,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling PluginsApi->get_plugin_details: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -184,6 +250,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -208,6 +275,68 @@ No authorization required
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Validation Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_plugins_settings**
+> object get_plugins_settings()
+
+Get Plugins Settings
+
+Returns the settings of all the plugins
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.PluginsApi(api_client)
+
+    try:
+        # Get Plugins Settings
+        api_response = api_instance.get_plugins_settings()
+        print("The response of PluginsApi->get_plugins_settings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PluginsApi->get_plugins_settings: %s\n" % e)
+```
+
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -250,6 +379,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -277,12 +407,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_available_plugins**
-> object list_available_plugins()
+# **install_plugin_from_registry**
+> object install_plugin_from_registry(body)
 
-List Available Plugins
+Install Plugin From Registry
 
-List available plugins
+Install a new plugin from external repository
 
 ### Example
 
@@ -304,19 +434,24 @@ configuration = cheshire_cat_api.Configuration(
 with cheshire_cat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cheshire_cat_api.PluginsApi(api_client)
+    body = {"url":"https://github.com/plugin-dev-account/plugin-repo"} # object | 
 
     try:
-        # List Available Plugins
-        api_response = api_instance.list_available_plugins()
-        print("The response of PluginsApi->list_available_plugins:\n")
+        # Install Plugin From Registry
+        api_response = api_instance.install_plugin_from_registry(body)
+        print("The response of PluginsApi->install_plugin_from_registry:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling PluginsApi->list_available_plugins: %s\n" % e)
+        print("Exception when calling PluginsApi->install_plugin_from_registry: %s\n" % e)
 ```
 
 
+
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **object**|  | 
 
 ### Return type
 
@@ -328,13 +463,14 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -375,6 +511,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling PluginsApi->toggle_plugin: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -432,7 +569,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cheshire_cat_api.PluginsApi(api_client)
     plugin_id = 'plugin_id_example' # str | 
-    body = {"active":false} # object | 
+    body = {"setting_a":"some value","setting_b":"another value"} # object | 
 
     try:
         # Upsert Plugin Settings
@@ -442,6 +579,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling PluginsApi->upsert_plugin_settings: %s\n" % e)
 ```
+
 
 
 ### Parameters

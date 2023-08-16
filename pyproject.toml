@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "cheshire_cat_api"
-version = "0.2.1"
+version = "1.0.1"
 description = "😸 Cheshire-Cat API Client"
 authors = ["Chesire Cat AI"]
 maintainers = [
-    "Nicola Corbellini"
+    "Nicola Corbellini",
+    "Piero Savastano"
 ]
 homepage = "https://cheshirecat.ai/"
 license = "GPL-3.0-only"
@@ -20,11 +21,11 @@ classifiers = [
 # ADD DOCUMENTATION WITH URL
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.10"
 
-urllib3 = ">= 1.25.3"
-python-dateutil = ">=2.8.2"
-pydantic = "^1.10.5, <2"
+urllib3 = ">= 1.25.3, <2.1.0"
+python-dateutil = ">=2.5.3"
+pydantic = "1.10.5, <2"
 aenum = ">=3.1.11"
 websocket-client= ">=1.6.1"
 

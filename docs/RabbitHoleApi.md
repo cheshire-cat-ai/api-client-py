@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **upload_file**
-> object upload_file(file, chunk_size=chunk_size, chunk_overlap=chunk_overlap, summary=summary)
+> object upload_file(file, chunk_size=chunk_size, chunk_overlap=chunk_overlap)
 
 Upload File
 
@@ -39,16 +39,16 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     file = None # bytearray | 
     chunk_size = 400 # int | Maximum length of each chunk after the document is split (in characters) (optional) (default to 400)
     chunk_overlap = 100 # int | Chunk overlap (in characters) (optional) (default to 100)
-    summary = False # bool | Enables call to summary hook for this file (optional) (default to False)
 
     try:
         # Upload File
-        api_response = api_instance.upload_file(file, chunk_size=chunk_size, chunk_overlap=chunk_overlap, summary=summary)
+        api_response = api_instance.upload_file(file, chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         print("The response of RabbitHoleApi->upload_file:\n")
         pprint(api_response)
     except Exception as e:
         print("Exception when calling RabbitHoleApi->upload_file: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -58,7 +58,6 @@ Name | Type | Description  | Notes
  **file** | **bytearray**|  | 
  **chunk_size** | **int**| Maximum length of each chunk after the document is split (in characters) | [optional] [default to 400]
  **chunk_overlap** | **int**| Chunk overlap (in characters) | [optional] [default to 100]
- **summary** | **bool**| Enables call to summary hook for this file | [optional] [default to False]
 
 ### Return type
 
@@ -118,6 +117,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling RabbitHoleApi->upload_memory: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -185,6 +185,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling RabbitHoleApi->upload_url: %s\n" % e)
 ```
+
 
 
 ### Parameters

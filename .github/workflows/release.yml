@@ -8,17 +8,14 @@ on: [release]
 
 jobs:
   publish:
-    strategy:
-      matrix:
-        python-version: [ "3.10" ]
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.10"
 
       - name: Build and publish to pypi
         uses: JRubics/poetry-publish@v1.17

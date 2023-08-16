@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **url** | **str** | URL of the website to which you want to save the content | 
 **chunk_size** | **int** | Maximum length of each chunk after the document is split (in characters) | [optional] [default to 400]
 **chunk_overlap** | **int** | Chunk overlap (in characters) | [optional] [default to 100]
-**summary** | **bool** | Enables call to summary hook for this website | [optional] [default to False]
 
 ## Example
 
