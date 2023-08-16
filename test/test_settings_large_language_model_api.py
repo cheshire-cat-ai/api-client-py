@@ -23,7 +23,7 @@ class TestSettingsLargeLanguageModelApi(unittest.TestCase):
     """SettingsLargeLanguageModelApi unit test stubs"""
 
     def setUp(self):
-        self.api = cheshire_cat_api.api.settings_large_language_model_api.SettingsLargeLanguageModelApi()  # noqa: E501
+        self.api = cheshire_cat_api.api.large_language_model_api.LargeLanguageModelApi()  # noqa: E501
 
     def tearDown(self):
         pass

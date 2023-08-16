@@ -23,7 +23,7 @@ class TestSettingsPromptApi(unittest.TestCase):
     """SettingsPromptApi unit test stubs"""
 
     def setUp(self):
-        self.api = cheshire_cat_api.api.settings_prompt_api.SettingsPromptApi()  # noqa: E501
+        self.api = cheshire_cat_api.api.prompt_api.PromptApi()  # noqa: E501
 
     def tearDown(self):
         pass

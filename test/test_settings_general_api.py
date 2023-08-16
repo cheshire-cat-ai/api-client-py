@@ -23,7 +23,7 @@ class TestSettingsGeneralApi(unittest.TestCase):
     """SettingsGeneralApi unit test stubs"""
 
     def setUp(self):
-        self.api = cheshire_cat_api.api.settings_general_api.SettingsGeneralApi()  # noqa: E501
+        self.api = cheshire_cat_api.api.settings_api.SettingsApi()  # noqa: E501
 
     def tearDown(self):
         pass
