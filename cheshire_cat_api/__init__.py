@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 from cheshire_cat_api.cat_client import CatClient
 from cheshire_cat_api.utils import Settings, WebSocketSettings

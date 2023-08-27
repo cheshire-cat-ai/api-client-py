@@ -124,12 +124,16 @@ class CatClient:
 
         print(f"Connection closed: {msg}")
 
-    def send(self, message: str, prompt_settings: Dict = {}):
+    def send(self, message: str, prompt_settings=None, user_id="user", **kwargs):
         """Send a message to WebSocket server using a separate thread"""
+        if prompt_settings is None:
+            prompt_settings = {}
         if not self.is_closed:
             self._ws.send(json.dumps({
                 "text": message,
-                "prompt_settings": prompt_settings
+                "prompt_settings": prompt_settings,
+                "user_id": user_id,
+                **kwargs
             }))
 
     def close(self):
