@@ -24,15 +24,17 @@ class WebSocketSettings:
     Class containing the WebSocket configuration options and variables used by ccat-api package
     """
 
-    def __init__(self):
+    def __init__(self, path='ws', retries=3, delay=5000, on_failed=None, user_id=None):
         # Websocket path to use to communicate with the CCat
-        self.path = 'ws'
+        self.path = path
         # The maximum number of retries before calling on_failed
-        self.retries = 3
+        self.retries = retries
         # The delay for reconnect, in milliseconds
-        self.delay = 5000
+        self.delay = delay
         # The function to call after failing to reconnect
-        self.on_failed = None
+        self.on_failed = on_failed
+        # User to connect with
+        self.user_id = user_id
 
 
 class Settings:
@@ -40,18 +42,26 @@ class Settings:
     Class containing all the configuration options and variables used by ccat-api package
     """
 
-    def __init__(self):
+    def __init__(self,
+                 base_url='localhost',
+                 auth_key='',
+                 port=1865,
+                 secure=False,
+                 timeout=10000,
+                 instant=True,
+                 ws=WebSocketSettings(),
+                 ):
         # The URL to which connect to the Cat
-        self.base_url = 'localhost'
+        self.base_url = base_url
         # The key to authenticate the Cat endpoints
-        self.auth_key = ''
+        self.auth_key = auth_key
         # The port to which connect to the Cat
-        self.port = 1865
+        self.port = port
         # Choose to either use the secure protocol or not
-        self.secure = False
+        self.secure = secure
         # Timeout for the endpoints, in milliseconds
-        self.timeout = 10000
+        self.timeout = timeout
         # Choose to either instantly initialize websocket and api client or not
-        self.instant = True
+        self.instant = instant
         # WebSocket Settings
-        self.ws = WebSocketSettings()
+        self.ws = ws
