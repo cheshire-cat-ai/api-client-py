@@ -46,9 +46,12 @@ class CatClient:
         return f"{secure}{self.settings.base_url}{port}"
 
     def _connect(self):
+        connection_url = f"ws{self.url}/{self.settings.ws.path}"
+        if self.settings.ws.user_id is not None:
+            connection_url += f"/{self.settings.ws.user_id}"
         """"Connect to the WebSocket in a separate thread"""
         self._ws = WebSocketApp(
-            f"ws{self.url}/{self.settings.ws.path}",
+            connection_url,
             on_message=self.on_ws_message,
             on_error=self.on_ws_error,
             on_close=self.on_ws_close,
@@ -71,6 +74,7 @@ class CatClient:
                 header_name='access_token',
                 header_value=self.settings.auth_key
             ))
+            time.sleep(2)
             self.is_started = True
             time.sleep(2)
 
@@ -125,12 +129,16 @@ class CatClient:
 
         print(f"Connection closed: {msg}")
 
-    def send(self, message: str, prompt_settings: Dict = {}):
+    def send(self, message: str, prompt_settings=None, user_id="user", **kwargs):
         """Send a message to WebSocket server using a separate thread"""
+        if prompt_settings is None:
+            prompt_settings = {}
         if not self.is_closed:
             self._ws.send(json.dumps({
                 "text": message,
-                "prompt_settings": prompt_settings
+                "prompt_settings": prompt_settings,
+                "user_id": user_id,
+                **kwargs
             }))
 
     def close(self):
