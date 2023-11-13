@@ -6,7 +6,6 @@ cheshire_cat_api/api/embedder_api.py
 cheshire_cat_api/api/large_language_model_api.py
 cheshire_cat_api/api/memory_api.py
 cheshire_cat_api/api/plugins_api.py
-cheshire_cat_api/api/prompt_api.py
 cheshire_cat_api/api/rabbit_hole_api.py
 cheshire_cat_api/api/settings_api.py
 cheshire_cat_api/api/status_api.py
@@ -30,7 +29,6 @@ docs/LargeLanguageModelApi.md
 docs/LocationInner.md
 docs/MemoryApi.md
 docs/PluginsApi.md
-docs/PromptApi.md
 docs/RabbitHoleApi.md
 docs/SettingBody.md
 docs/SettingsApi.md
@@ -43,9 +41,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_embedder_api.py
-test/test_large_language_model_api.py
-test/test_prompt_api.py
-test/test_settings_api.py
-test/test_value.py
 tox.ini

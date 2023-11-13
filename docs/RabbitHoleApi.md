@@ -4,10 +4,73 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_allowed_mimetypes**](RabbitHoleApi.md#get_allowed_mimetypes) | **GET** /rabbithole/allowed-mimetypes/ | Get Allowed Mimetypes
 [**upload_file**](RabbitHoleApi.md#upload_file) | **POST** /rabbithole/ | Upload File
 [**upload_memory**](RabbitHoleApi.md#upload_memory) | **POST** /rabbithole/memory/ | Upload Memory
 [**upload_url**](RabbitHoleApi.md#upload_url) | **POST** /rabbithole/web/ | Upload Url
 
+
+# **get_allowed_mimetypes**
+> object get_allowed_mimetypes()
+
+Get Allowed Mimetypes
+
+Retrieve the allowed mimetypes that can be ingested by the Rabbit Hole
+
+### Example
+
+```python
+import time
+import os
+import cheshire_cat_api
+from cheshire_cat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = cheshire_cat_api.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with cheshire_cat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = cheshire_cat_api.RabbitHoleApi(api_client)
+
+    try:
+        # Get Allowed Mimetypes
+        api_response = api_instance.get_allowed_mimetypes()
+        print("The response of RabbitHoleApi->get_allowed_mimetypes:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling RabbitHoleApi->get_allowed_mimetypes: %s\n" % e)
+```
+
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
 > object upload_file(file, chunk_size=chunk_size, chunk_overlap=chunk_overlap)

@@ -25,6 +25,7 @@
 .github/
 cheshire_cat_api/cat_client.py
 cheshire_cat_api/utils.py
+#cheshire_cat_api/__init__.py
 
 scripts/
 .gitignore

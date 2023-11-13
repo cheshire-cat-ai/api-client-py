@@ -1,7 +1,7 @@
 from cheshire_cat_api.api_client import ApiClient
 from cheshire_cat_api.api import (
     EmbedderApi, LargeLanguageModelApi, MemoryApi, PluginsApi,
-    PromptApi, RabbitHoleApi, SettingsApi, StatusApi
+    RabbitHoleApi, SettingsApi, StatusApi
 )
 
 
@@ -16,7 +16,6 @@ class CatAPI:
         self.embedder = EmbedderApi(client)
         self.general = SettingsApi(client)
         self.llm = LargeLanguageModelApi(client)
-        self.prompt = PromptApi(client)
 
 
 class WebSocketSettings:

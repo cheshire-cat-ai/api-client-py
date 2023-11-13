@@ -83,7 +83,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_available_plugins**
-> object get_available_plugins()
+> object get_available_plugins(query=query)
 
 Get Available Plugins
 
@@ -109,10 +109,11 @@ configuration = cheshire_cat_api.Configuration(
 with cheshire_cat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cheshire_cat_api.PluginsApi(api_client)
+    query = 'query_example' # str |  (optional)
 
     try:
         # Get Available Plugins
-        api_response = api_instance.get_available_plugins()
+        api_response = api_instance.get_available_plugins(query=query)
         print("The response of PluginsApi->get_available_plugins:\n")
         pprint(api_response)
     except Exception as e:
@@ -122,7 +123,10 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **query** | **str**|  | [optional] 
 
 ### Return type
 
@@ -141,6 +145,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -412,7 +417,7 @@ No authorization required
 
 Install Plugin From Registry
 
-Install a new plugin from external repository
+Install a new plugin from registry
 
 ### Example
 
@@ -434,7 +439,7 @@ configuration = cheshire_cat_api.Configuration(
 with cheshire_cat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cheshire_cat_api.PluginsApi(api_client)
-    body = {"url":"https://github.com/plugin-dev-account/plugin-repo"} # object | 
+    body = None # object | 
 
     try:
         # Install Plugin From Registry
@@ -569,7 +574,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cheshire_cat_api.PluginsApi(api_client)
     plugin_id = 'plugin_id_example' # str | 
-    body = {"setting_a":"some value","setting_b":"another value"} # object | 
+    body = None # object | 
 
     try:
         # Upsert Plugin Settings

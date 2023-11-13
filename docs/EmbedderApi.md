@@ -166,7 +166,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cheshire_cat_api.EmbedderApi(api_client)
     language_embedder_name = 'language_embedder_name_example' # str | 
-    body = {"openai_api_key":"your-key-here"} # object | 
+    body = None # object | 
 
     try:
         # Upsert Embedder Setting
