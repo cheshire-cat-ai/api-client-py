@@ -19,7 +19,7 @@ import pprint
 import re  # noqa: F401
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, validator
+from pydantic import BaseModel, Field, StrictInt, StrictStr, ValidationError, validator, field_validator
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
@@ -38,7 +38,7 @@ class LocationInner(BaseModel):
         actual_instance: Union[int, str]
     else:
         actual_instance: Any
-    any_of_schemas: List[str] = Field(LOCATIONINNER_ANY_OF_SCHEMAS, const=True)
+    any_of_schemas: List[str] = Field(LOCATIONINNER_ANY_OF_SCHEMAS, Literal=True)
 
     class Config:
         validate_assignment = True
@@ -53,7 +53,7 @@ class LocationInner(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
         instance = LocationInner.construct()
         error_messages = []

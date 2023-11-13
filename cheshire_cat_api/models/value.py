@@ -19,7 +19,7 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, conlist, validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, conlist, validator, field_validator
 from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
 
@@ -38,7 +38,7 @@ class Value(BaseModel):
         actual_instance: Union[List[object], object]
     else:
         actual_instance: Any
-    any_of_schemas: List[str] = Field(VALUE_ANY_OF_SCHEMAS, const=True)
+    any_of_schemas: List[str] = Field(VALUE_ANY_OF_SCHEMAS, Literal=True)
 
     class Config:
         validate_assignment = True
@@ -53,7 +53,7 @@ class Value(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
     def actual_instance_must_validate_anyof(cls, v):
         instance = Value.construct()
         error_messages = []
