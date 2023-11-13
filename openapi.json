@@ -1,9 +1,9 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.0.3",
   "info": {
     "title": "😸 Cheshire-Cat API",
-    "description": "Open source and customizable AI architecture",
-    "version": "1.0.1",
+    "description": "Production ready AI assistant framework",
+    "version": "1.3.1",
     "x-logo": {
       "url": "https://github.com/cheshire-cat-ai/core/blob/main/cheshire-cat.jpeg?raw=true"
     }
@@ -23,8 +23,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Home",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Home"
                 }
               }
             }
@@ -41,16 +41,17 @@
         "summary": "Get Settings",
         "description": "Get the entire list of settings available in the database",
         "operationId": "get_settings",
+        "security": [],
         "parameters": [
           {
+            "name": "search",
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "Search",
               "type": "string",
-              "default": ""
-            },
-            "name": "search",
-            "in": "query"
+              "default": "",
+              "title": "Search"
+            }
           }
         ],
         "responses": {
@@ -72,8 +73,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "post": {
         "tags": [
@@ -82,15 +82,16 @@
         "summary": "Create Setting",
         "description": "Create a new setting in the database",
         "operationId": "create_setting",
+        "security": [],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SettingBody"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -111,8 +112,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/settings/{settingId}": {
@@ -123,15 +123,16 @@
         "summary": "Get Setting",
         "description": "Get the a specific setting from the database",
         "operationId": "get_setting",
+        "security": [],
         "parameters": [
           {
+            "name": "settingId",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Settingid",
-              "type": "string"
-            },
-            "name": "settingId",
-            "in": "path"
+              "type": "string",
+              "title": "Settingid"
+            }
           }
         ],
         "responses": {
@@ -153,8 +154,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "tags": [
@@ -163,26 +163,27 @@
         "summary": "Update Setting",
         "description": "Update a specific setting in the database if it exists",
         "operationId": "update_setting",
+        "security": [],
         "parameters": [
           {
+            "name": "settingId",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Settingid",
-              "type": "string"
-            },
-            "name": "settingId",
-            "in": "path"
+              "type": "string",
+              "title": "Settingid"
+            }
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SettingBody"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -203,8 +204,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "tags": [
@@ -213,15 +213,16 @@
         "summary": "Delete Setting",
         "description": "Delete a specific setting in the database",
         "operationId": "delete_setting",
+        "security": [],
         "parameters": [
           {
+            "name": "settingId",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Settingid",
-              "type": "string"
-            },
-            "name": "settingId",
-            "in": "path"
+              "type": "string",
+              "title": "Settingid"
+            }
           }
         ],
         "responses": {
@@ -243,28 +244,7 @@
               }
             }
           }
-        },
-        "security": []
-      }
-    },
-    "/prompt/settings/": {
-      "get": {
-        "tags": [
-          "Prompt"
-        ],
-        "summary": "Get Default Prompt Settings",
-        "operationId": "get_default_prompt_settings",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        },
-        "security": []
+        }
       }
     },
     "/llm/settings/": {
@@ -281,8 +261,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Llms Settings",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Llms Settings"
                 }
               }
             }
@@ -299,15 +279,16 @@
         "summary": "Get Llm Settings",
         "description": "Get settings and schema of the specified Large Language Model",
         "operationId": "get_llm_settings",
+        "security": [],
         "parameters": [
           {
+            "name": "languageModelName",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Languagemodelname",
-              "type": "string"
-            },
-            "name": "languageModelName",
-            "in": "path"
+              "type": "string",
+              "title": "Languagemodelname"
+            }
           }
         ],
         "responses": {
@@ -316,8 +297,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Llm Settings",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Llm Settings"
                 }
               }
             }
@@ -332,8 +313,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "tags": [
@@ -342,30 +322,28 @@
         "summary": "Upsert Llm Setting",
         "description": "Upsert the Large Language Model setting",
         "operationId": "upsert_llm_setting",
+        "security": [],
         "parameters": [
           {
+            "name": "languageModelName",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Languagemodelname",
-              "type": "string"
-            },
-            "name": "languageModelName",
-            "in": "path"
+              "type": "string",
+              "title": "Languagemodelname"
+            }
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "title": "Payload",
-                "type": "object"
-              },
-              "example": {
-                "openai_api_key": "your-key-here"
+                "type": "object",
+                "title": "Payload"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -373,8 +351,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Upsert Llm Setting",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Upsert Llm Setting"
                 }
               }
             }
@@ -389,8 +367,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/embedder/settings/": {
@@ -407,8 +384,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Embedders Settings",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Embedders Settings"
                 }
               }
             }
@@ -425,15 +402,16 @@
         "summary": "Get Embedder Settings",
         "description": "Get settings and schema of the specified Embedder",
         "operationId": "get_embedder_settings",
+        "security": [],
         "parameters": [
           {
+            "name": "languageEmbedderName",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Languageembeddername",
-              "type": "string"
-            },
-            "name": "languageEmbedderName",
-            "in": "path"
+              "type": "string",
+              "title": "Languageembeddername"
+            }
           }
         ],
         "responses": {
@@ -442,8 +420,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Embedder Settings",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Embedder Settings"
                 }
               }
             }
@@ -458,8 +436,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "tags": [
@@ -468,30 +445,28 @@
         "summary": "Upsert Embedder Setting",
         "description": "Upsert the Embedder setting",
         "operationId": "upsert_embedder_setting",
+        "security": [],
         "parameters": [
           {
+            "name": "languageEmbedderName",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Languageembeddername",
-              "type": "string"
-            },
-            "name": "languageEmbedderName",
-            "in": "path"
+              "type": "string",
+              "title": "Languageembeddername"
+            }
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "title": "Payload",
-                "type": "object"
-              },
-              "example": {
-                "openai_api_key": "your-key-here"
+                "type": "object",
+                "title": "Payload"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -499,8 +474,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Upsert Embedder Setting",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Upsert Embedder Setting"
                 }
               }
             }
@@ -515,8 +490,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/plugins/": {
@@ -527,20 +501,41 @@
         "summary": "Get Available Plugins",
         "description": "List available plugins",
         "operationId": "get_available_plugins",
+        "security": [],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "Query"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Available Plugins",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Available Plugins"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/plugins/upload/": {
@@ -567,8 +562,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Install Plugin",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Install Plugin"
                 }
               }
             }
@@ -593,21 +588,19 @@
           "Plugins"
         ],
         "summary": "Install Plugin From Registry",
-        "description": "Install a new plugin from external repository",
+        "description": "Install a new plugin from registry",
         "operationId": "install_plugin_from_registry",
+        "security": [],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "title": "Url Repo",
-                "type": "object"
-              },
-              "example": {
-                "url": "https://github.com/plugin-dev-account/plugin-repo"
+                "type": "object",
+                "title": "Payload"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -615,8 +608,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Install Plugin From Registry",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Install Plugin From Registry"
                 }
               }
             }
@@ -631,8 +624,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/plugins/toggle/{plugin_id}": {
@@ -643,15 +635,16 @@
         "summary": "Toggle Plugin",
         "description": "Enable or disable a single plugin",
         "operationId": "toggle_plugin",
+        "security": [],
         "parameters": [
           {
+            "name": "plugin_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Plugin Id",
-              "type": "string"
-            },
-            "name": "plugin_id",
-            "in": "path"
+              "type": "string",
+              "title": "Plugin Id"
+            }
           }
         ],
         "responses": {
@@ -660,8 +653,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Toggle Plugin",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Toggle Plugin"
                 }
               }
             }
@@ -676,8 +669,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/plugins/{plugin_id}": {
@@ -688,15 +680,16 @@
         "summary": "Get Plugin Details",
         "description": "Returns information on a single plugin",
         "operationId": "get_plugin_details",
+        "security": [],
         "parameters": [
           {
+            "name": "plugin_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Plugin Id",
-              "type": "string"
-            },
-            "name": "plugin_id",
-            "in": "path"
+              "type": "string",
+              "title": "Plugin Id"
+            }
           }
         ],
         "responses": {
@@ -705,8 +698,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Plugin Details",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Plugin Details"
                 }
               }
             }
@@ -721,8 +714,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "delete": {
         "tags": [
@@ -731,15 +723,16 @@
         "summary": "Delete Plugin",
         "description": "Physically remove plugin.",
         "operationId": "delete_plugin",
+        "security": [],
         "parameters": [
           {
+            "name": "plugin_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Plugin Id",
-              "type": "string"
-            },
-            "name": "plugin_id",
-            "in": "path"
+              "type": "string",
+              "title": "Plugin Id"
+            }
           }
         ],
         "responses": {
@@ -748,8 +741,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Delete Plugin",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Delete Plugin"
                 }
               }
             }
@@ -764,8 +757,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/plugins/settings/": {
@@ -782,8 +774,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Plugins Settings",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Plugins Settings"
                 }
               }
             }
@@ -800,15 +792,16 @@
         "summary": "Get Plugin Settings",
         "description": "Returns the settings of a specific plugin",
         "operationId": "get_plugin_settings",
+        "security": [],
         "parameters": [
           {
+            "name": "plugin_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Plugin Id",
-              "type": "string"
-            },
-            "name": "plugin_id",
-            "in": "path"
+              "type": "string",
+              "title": "Plugin Id"
+            }
           }
         ],
         "responses": {
@@ -817,8 +810,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Plugin Settings",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Plugin Settings"
                 }
               }
             }
@@ -833,8 +826,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       },
       "put": {
         "tags": [
@@ -843,31 +835,28 @@
         "summary": "Upsert Plugin Settings",
         "description": "Updates the settings of a specific plugin",
         "operationId": "upsert_plugin_settings",
+        "security": [],
         "parameters": [
           {
+            "name": "plugin_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Plugin Id",
-              "type": "string"
-            },
-            "name": "plugin_id",
-            "in": "path"
+              "type": "string",
+              "title": "Plugin Id"
+            }
           }
         ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "title": "Payload",
-                "type": "object"
-              },
-              "example": {
-                "setting_a": "some value",
-                "setting_b": "another value"
+                "type": "object",
+                "title": "Payload"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -875,8 +864,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Upsert Plugin Settings",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Upsert Plugin Settings"
                 }
               }
             }
@@ -891,8 +880,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/memory/recall/": {
@@ -903,41 +891,30 @@
         "summary": "Recall Memories From Text",
         "description": "Search k memories similar to given text.",
         "operationId": "recall_memories_from_text",
+        "security": [],
         "parameters": [
           {
-            "description": "Find memories similar to this text.",
+            "name": "text",
+            "in": "query",
             "required": true,
             "schema": {
-              "title": "Text",
               "type": "string",
-              "description": "Find memories similar to this text."
+              "description": "Find memories similar to this text.",
+              "title": "Text"
             },
-            "name": "text",
-            "in": "query"
+            "description": "Find memories similar to this text."
           },
           {
-            "description": "How many memories to return.",
+            "name": "k",
+            "in": "query",
             "required": false,
             "schema": {
-              "title": "K",
               "type": "integer",
               "description": "How many memories to return.",
-              "default": 100
+              "default": 100,
+              "title": "K"
             },
-            "name": "k",
-            "in": "query"
-          },
-          {
-            "description": "User id.",
-            "required": false,
-            "schema": {
-              "title": "User Id",
-              "type": "string",
-              "description": "User id.",
-              "default": "user"
-            },
-            "name": "user_id",
-            "in": "query"
+            "description": "How many memories to return."
           }
         ],
         "responses": {
@@ -946,8 +923,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Recall Memories From Text",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Recall Memories From Text"
                 }
               }
             }
@@ -962,8 +939,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/memory/collections/": {
@@ -980,8 +956,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Get Collections",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Get Collections"
                 }
               }
             }
@@ -1002,8 +978,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Wipe Collections",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Wipe Collections"
                 }
               }
             }
@@ -1020,15 +996,16 @@
         "summary": "Wipe Single Collection",
         "description": "Delete and recreate a collection",
         "operationId": "wipe_single_collection",
+        "security": [],
         "parameters": [
           {
+            "name": "collection_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Collection Id",
-              "type": "string"
-            },
-            "name": "collection_id",
-            "in": "path"
+              "type": "string",
+              "title": "Collection Id"
+            }
           }
         ],
         "responses": {
@@ -1037,8 +1014,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Wipe Single Collection",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Wipe Single Collection"
                 }
               }
             }
@@ -1053,8 +1030,7 @@
               }
             }
           }
-        },
-        "security": []
+        }
       }
     },
     "/memory/collections/{collection_id}/points/{memory_id}/": {
@@ -1065,24 +1041,25 @@
         "summary": "Wipe Memory Point",
         "description": "Delete a specific point in memory",
         "operationId": "wipe_memory_point",
+        "security": [],
         "parameters": [
           {
+            "name": "collection_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Collection Id",
-              "type": "string"
-            },
-            "name": "collection_id",
-            "in": "path"
+              "type": "string",
+              "title": "Collection Id"
+            }
           },
           {
+            "name": "memory_id",
+            "in": "path",
             "required": true,
             "schema": {
-              "title": "Memory Id",
-              "type": "string"
-            },
-            "name": "memory_id",
-            "in": "path"
+              "type": "string",
+              "title": "Memory Id"
+            }
           }
         ],
         "responses": {
@@ -1091,8 +1068,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Wipe Memory Point",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Wipe Memory Point"
                 }
               }
             }
@@ -1107,17 +1084,94 @@
               }
             }
           }
+        }
+      }
+    },
+    "/memory/collections/{collection_id}/points": {
+      "delete": {
+        "tags": [
+          "Memory"
+        ],
+        "summary": "Wipe Memory Points By Metadata",
+        "description": "Delete points in memory by filter",
+        "operationId": "wipe_memory_points_by_metadata",
+        "security": [],
+        "parameters": [
+          {
+            "name": "collection_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Collection Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "default": {},
+                "title": "Metadata"
+              }
+            }
+          }
         },
-        "security": []
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Response Wipe Memory Points By Metadata"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/memory/conversation_history/": {
+      "get": {
+        "tags": [
+          "Memory"
+        ],
+        "summary": "Get Conversation History",
+        "description": "Get the specified user's conversation history from working memory",
+        "operationId": "get_conversation_history",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Response Get Conversation History"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
       "delete": {
         "tags": [
           "Memory"
         ],
         "summary": "Wipe Conversation History",
-        "description": "Delete conversation history from working memory",
+        "description": "Delete the specified user's conversation history from working memory",
         "operationId": "wipe_conversation_history",
         "responses": {
           "200": {
@@ -1125,8 +1179,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Wipe Conversation History",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Wipe Conversation History"
                 }
               }
             }
@@ -1159,8 +1213,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Upload File",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Upload File"
                 }
               }
             }
@@ -1244,8 +1298,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Response Upload Memory",
-                  "type": "object"
+                  "type": "object",
+                  "title": "Response Upload Memory"
                 }
               }
             }
@@ -1263,145 +1317,167 @@
         },
         "security": []
       }
+    },
+    "/rabbithole/allowed-mimetypes/": {
+      "get": {
+        "tags": [
+          "Rabbit Hole"
+        ],
+        "summary": "Get Allowed Mimetypes",
+        "description": "Retrieve the allowed mimetypes that can be ingested by the Rabbit Hole",
+        "operationId": "get_allowed_mimetypes",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Response Get Allowed Mimetypes"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
     }
   },
   "components": {
     "schemas": {
       "Body_install_plugin": {
-        "title": "Body_install_plugin",
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
         "required": [
           "file"
         ],
-        "type": "object",
-        "properties": {
-          "file": {
-            "title": "File",
-            "type": "string",
-            "format": "binary"
-          }
-        }
+        "title": "Body_install_plugin"
       },
       "Body_upload_file": {
-        "title": "Body_upload_file",
-        "required": [
-          "file"
-        ],
-        "type": "object",
         "properties": {
           "file": {
-            "title": "File",
             "type": "string",
-            "format": "binary"
+            "format": "binary",
+            "title": "File"
           },
           "chunk_size": {
-            "title": "Chunk Size",
             "type": "integer",
+            "title": "Chunk Size",
             "description": "Maximum length of each chunk after the document is split (in characters)",
             "default": 400
           },
           "chunk_overlap": {
-            "title": "Chunk Overlap",
             "type": "integer",
+            "title": "Chunk Overlap",
             "description": "Chunk overlap (in characters)",
             "default": 100
           }
-        }
-      },
-      "Body_upload_memory": {
-        "title": "Body_upload_memory",
+        },
+        "type": "object",
         "required": [
           "file"
         ],
-        "type": "object",
+        "title": "Body_upload_file"
+      },
+      "Body_upload_memory": {
         "properties": {
           "file": {
-            "title": "File",
             "type": "string",
-            "format": "binary"
+            "format": "binary",
+            "title": "File"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_memory"
       },
       "Body_upload_url": {
-        "title": "Body_upload_url",
-        "required": [
-          "url"
-        ],
-        "type": "object",
         "properties": {
           "url": {
-            "title": "Url",
             "type": "string",
+            "title": "Url",
             "description": "URL of the website to which you want to save the content"
           },
           "chunk_size": {
-            "title": "Chunk Size",
             "type": "integer",
+            "title": "Chunk Size",
             "description": "Maximum length of each chunk after the document is split (in characters)",
             "default": 400
           },
           "chunk_overlap": {
-            "title": "Chunk Overlap",
             "type": "integer",
+            "title": "Chunk Overlap",
             "description": "Chunk overlap (in characters)",
             "default": 100
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "title": "Body_upload_url"
       },
       "HTTPValidationError": {
-        "title": "HTTPValidationError",
-        "type": "object",
         "properties": {
           "detail": {
-            "title": "Detail",
-            "type": "array",
             "items": {
               "$ref": "#/components/schemas/ValidationError"
-            }
+            },
+            "type": "array",
+            "title": "Detail"
           }
-        }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
       },
       "SettingBody": {
-        "title": "SettingBody",
-        "required": [
-          "name",
-          "value"
-        ],
-        "type": "object",
         "properties": {
           "name": {
-            "title": "Name",
-            "type": "string"
+            "type": "string",
+            "title": "Name"
           },
           "value": {
-            "title": "Value",
             "anyOf": [
               {
                 "type": "object"
               },
               {
-                "type": "array",
-                "items": {}
+                "items": {},
+                "type": "array"
               }
-            ]
+            ],
+            "title": "Value"
           },
           "category": {
-            "title": "Category",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "value"
+        ],
+        "title": "SettingBody"
       },
       "ValidationError": {
-        "title": "ValidationError",
-        "required": [
-          "loc",
-          "msg",
-          "type"
-        ],
-        "type": "object",
         "properties": {
           "loc": {
-            "title": "Location",
-            "type": "array",
             "items": {
               "anyOf": [
                 {
@@ -1411,17 +1487,26 @@
                   "type": "integer"
                 }
               ]
-            }
+            },
+            "type": "array",
+            "title": "Location"
           },
           "msg": {
-            "title": "Message",
-            "type": "string"
+            "type": "string",
+            "title": "Message"
           },
           "type": {
-            "title": "Error Type",
-            "type": "string"
+            "type": "string",
+            "title": "Error Type"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
       }
     },
     "securitySchemes": {}

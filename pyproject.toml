@@ -5,13 +5,16 @@ description = "😸 Cheshire-Cat API Client"
 authors = ["Chesire Cat AI"]
 maintainers = [
     "Nicola Corbellini",
-    "Piero Savastano"
+    "Piero Savastano",
+    "Emanuele Morrone",
+    "Marco Valenti",
+    "Daniele Nicosia"
 ]
 homepage = "https://cheshirecat.ai/"
 license = "GPL-3.0-only"
 readme = "README.md"
 repository = "https://github.com/cheshire-cat-ai/cheshire-cat-api"
-keywords = ["OpenAPI", "Cheshire-Cat", "LLM", "Open Source"]
+keywords = ["OpenAPI", "Cheshire-Cat", "LLM", "OpenSource"]
 include = ["cheshire_cat_api/py.typed"]
 classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -25,9 +28,8 @@ python = "^3.10"
 
 urllib3 = ">= 1.25.3, <2.1.0"
 python-dateutil = ">=2.5.3"
-pydantic = "1.10.5, <2"
-aenum = ">=3.1.11"
-websocket-client= ">=1.6.1"
+pydantic = ">= 2"
+websocket-client = ">=1.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.2.1"

@@ -76,9 +76,10 @@ class CatClient:
             ))
             time.sleep(2)
             self.is_started = True
+            time.sleep(2)
 
     def on_ws_open(self, ws):
-        """"Default message handler on conneciton opening"""
+        """"Default message handler on connection opening"""
 
         # Run user custom function
         if callable(self.on_open):

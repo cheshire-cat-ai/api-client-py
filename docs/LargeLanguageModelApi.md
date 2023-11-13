@@ -166,7 +166,7 @@ with cheshire_cat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = cheshire_cat_api.LargeLanguageModelApi(api_client)
     language_model_name = 'language_model_name_example' # str | 
-    body = {"openai_api_key":"your-key-here"} # object | 
+    body = None # object | 
 
     try:
         # Upsert Llm Setting
