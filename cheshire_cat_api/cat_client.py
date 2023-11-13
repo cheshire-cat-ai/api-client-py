@@ -46,9 +46,12 @@ class CatClient:
         return f"{secure}{self.settings.base_url}{port}"
 
     def _connect(self):
+        connection_url = f"ws{self.url}/{self.settings.ws.path}"
+        if self.settings.ws.user_id is not None:
+            connection_url += f"/{self.settings.ws.user_id}"
         """"Connect to the WebSocket in a separate thread"""
         self._ws = WebSocketApp(
-            f"ws{self.url}/{self.settings.ws.path}",
+            connection_url,
             on_message=self.on_ws_message,
             on_error=self.on_ws_error,
             on_close=self.on_ws_close,
@@ -71,6 +74,7 @@ class CatClient:
                 header_name='access_token',
                 header_value=self.settings.auth_key
             ))
+            time.sleep(2)
             self.is_started = True
 
     def on_ws_open(self, ws):
