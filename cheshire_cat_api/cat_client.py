@@ -74,6 +74,7 @@ class CatClient:
                 header_name='access_token',
                 header_value=self.settings.auth_key
             ))
+            time.sleep(2)
             self.is_started = True
 
     def on_ws_open(self, ws):
