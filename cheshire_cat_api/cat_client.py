@@ -1,6 +1,6 @@
 import json
 import time
-from typing import Dict, Callable
+from typing import Callable
 from websocket import WebSocketApp
 from threading import Thread
 from cheshire_cat_api.api_client import ApiClient
@@ -76,7 +76,6 @@ class CatClient:
             ))
             time.sleep(2)
             self.is_started = True
-            time.sleep(2)
 
     def on_ws_open(self, ws):
         """"Default message handler on connection opening"""

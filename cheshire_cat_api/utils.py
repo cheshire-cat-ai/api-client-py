@@ -47,7 +47,6 @@ class Settings:
                  port=1865,
                  secure=False,
                  timeout=10000,
-                 instant=True,
                  ws=WebSocketSettings(),
                  ):
         # The URL to which connect to the Cat
@@ -60,7 +59,5 @@ class Settings:
         self.secure = secure
         # Timeout for the endpoints, in milliseconds
         self.timeout = timeout
-        # Choose to either instantly initialize websocket and api client or not
-        self.instant = instant
         # WebSocket Settings
         self.ws = ws
