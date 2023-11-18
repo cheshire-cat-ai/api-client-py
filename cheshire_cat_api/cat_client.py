@@ -5,7 +5,11 @@ from websocket import WebSocketApp
 from threading import Thread
 from cheshire_cat_api.api_client import ApiClient
 from cheshire_cat_api.configuration import Configuration
-from cheshire_cat_api.utils import Settings, CatAPI
+from cheshire_cat_api.utils import Settings
+from cheshire_cat_api.api import (
+    EmbedderApi, LargeLanguageModelApi, MemoryApi, PluginsApi,
+    RabbitHoleApi, SettingsApi, StatusApi
+)
 
 
 class CatClient:
@@ -25,33 +29,44 @@ class CatClient:
         self.on_error = on_error
         self.on_close = on_close
         self.on_open = on_open
+
         # WebSocket settings
         self.settings = settings if settings is not None else Settings()
+
         # Connection status
         self.is_closed = False
-        self.is_started = False
-        # Closed by the user
-        self.explicitly_closed = False
+
         # Number of retries already done
         self.retried = 0
-        # Start instantly
-        if self.settings.instant:
-            self.run()
 
-    @property
-    def url(self):
-        """"Compose the WebSocket and API address"""
-        secure = 's://' if self.settings.secure else '://'
-        port = f":{self.settings.port}" if self.settings.port else ''
-        return f"{secure}{self.settings.base_url}{port}"
+        self._connect_api()
+        self._connect_ws()
 
-    def _connect(self):
-        connection_url = f"ws{self.url}/{self.settings.ws.path}"
-        if self.settings.ws.user_id is not None:
-            connection_url += f"/{self.settings.ws.user_id}"
-        """"Connect to the WebSocket in a separate thread"""
+        self.is_started = False
+
+    def _connect_api(self):
+        config = Configuration(host=f"http://{self.settings.base_url}")
+        client = ApiClient(
+            configuration=config,
+            header_name='access_token',
+            header_value=self.settings.auth_key
+        )
+        self.memory = MemoryApi(client)
+        self.plugins = PluginsApi(client)
+        self.rabbit_hole = RabbitHoleApi(client)
+        self.status = StatusApi(client)
+        self.embedder = EmbedderApi(client)
+        self.general = SettingsApi(client)
+        self.llm = LargeLanguageModelApi(client)
+
+    def _connect_ws(self):
+        # Closed by the user
+        self.explicitly_closed = False
+
+        url = self.settings.get_websocket_url()
+
         self._ws = WebSocketApp(
-            connection_url,
+            url,
             on_message=self.on_ws_message,
             on_error=self.on_ws_error,
             on_close=self.on_ws_close,
@@ -60,22 +75,6 @@ class CatClient:
 
         self.conn = Thread(target=self._ws.run_forever)
         self.conn.start()
-
-    def run(self):
-        """"Instantiate the WebSocket and Cat API client with configuration"""
-        if self.is_started:
-            raise Exception("The Cheshire Cat Client was already initialized")
-        else:
-            self._connect()
-            config = Configuration()
-            config.host = f'http{self.url}'
-            self.api = CatAPI(ApiClient(
-                configuration=config,
-                header_name='access_token',
-                header_value=self.settings.auth_key
-            ))
-            time.sleep(2)
-            self.is_started = True
 
     def on_ws_open(self, ws):
         """"Default message handler on connection opening"""
@@ -110,14 +109,16 @@ class CatClient:
         """"Default message handler on closed connection"""
 
         # Retry to connect if connection fails
-        if not self.explicitly_closed:
-            self.retried += 1
-            if self.settings.ws.retries < 0 or self.retried < self.settings.ws.retries:
-                self._connect()
-                time.sleep(self.settings.ws.delay / 1000)
-            else:
-                self.settings.ws.on_failed()
+        if self.explicitly_closed:
             return
+
+        self.retried += 1
+        if self.retried <= self.settings.retries:
+            self._connect_ws()
+            time.sleep(self.settings.delay / 1000)
+        else:
+            if self.settings.on_failed is not None:
+                self.settings.on_failed()
 
         self.is_closed = True if close_status_code is not None else False
 
@@ -128,15 +129,11 @@ class CatClient:
 
         print(f"Connection closed: {msg}")
 
-    def send(self, message: str, prompt_settings=None, user_id="user", **kwargs):
+    def send(self, message: str, **kwargs):
         """Send a message to WebSocket server using a separate thread"""
-        if prompt_settings is None:
-            prompt_settings = {}
         if not self.is_closed:
             self._ws.send(json.dumps({
                 "text": message,
-                "prompt_settings": prompt_settings,
-                "user_id": user_id,
                 **kwargs
             }))
 
