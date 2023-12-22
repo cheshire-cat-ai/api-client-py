@@ -40,7 +40,7 @@ class CatClient:
         self.rabbit_hole = None
         self.status = None
         self.embedder = None
-        self.general = None
+        self.settings = None
         self.llm = None
 
         self._connect_api()
