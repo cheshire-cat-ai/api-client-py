@@ -49,7 +49,9 @@ class CatClient:
         self.is_started = False
 
     def _connect_api(self):
-        config = Configuration(host=f"http://{self.settings.base_url}")
+        protocol = "https" if self.settings.secure_connection else "http"
+        config = Configuration(host=f"{protocol}://{self.settings.base_url}")
+
         client = ApiClient(
             configuration=config,
             header_name='access_token',
@@ -63,11 +65,9 @@ class CatClient:
         self.settings = SettingsApi(client)
         self.llm = LargeLanguageModelApi(client)
 
-    def _connect_ws(self):
-        # Closed by the user
-        self.explicitly_closed = False
-
-        url = self.settings.get_websocket_url()
+    def connect_ws(self):
+        protocol = "wss" if self.settings.secure_connection else "ws"
+        url = f"{protocol}://{self.settings.base_url}:{self.settings.port}/ws/{self.settings.user_id}"
 
         self._ws = WebSocketApp(
             url,
@@ -115,10 +115,7 @@ class CatClient:
 
         # Run user custom function
         if callable(self.on_close):
-            self.on_close(close_status_code, msg)
-            return
-
-        print(f"Connection closed: {msg}")
+            self.on_close(status_code, msg)
 
     def send(self, message: str, **kwargs):
         """Send a message to WebSocket server using a separate thread"""
@@ -133,5 +130,4 @@ class CatClient:
 
     def close(self):
         # Close connection
-        self.explicitly_closed = True
         self._ws.close()
