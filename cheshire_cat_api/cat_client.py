@@ -44,9 +44,6 @@ class CatClient:
         self.llm = None
 
         self._connect_api()
-        self._connect_ws()
-
-        self.is_started = False
 
     def _connect_api(self):
         protocol = "https" if self.settings.secure_connection else "http"
@@ -131,3 +128,11 @@ class CatClient:
     def close(self):
         # Close connection
         self._ws.close()
+        self.conn.join()
+
+    @property
+    def is_connected(self):
+        if self._ws is None:
+            return False
+        
+        return self._ws.sock.connected
