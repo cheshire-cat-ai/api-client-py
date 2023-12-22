@@ -17,7 +17,6 @@
 __version__ = "1.3.1"
 
 from cheshire_cat_api.cat_client import CatClient
-from cheshire_cat_api.utils import Settings, WebSocketSettings
 
 # import apis into sdk package
 from cheshire_cat_api.api.embedder_api import EmbedderApi
