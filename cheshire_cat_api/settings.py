@@ -10,4 +10,3 @@ class Settings:
     user_id: str = "user"
     auth_key: str = ''
     secure_connection: bool = False
-    timeout: int = 10000
