@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 @dataclass
-class Settings:
+class Config:
     """
     Class containing all the configuration options and variables used by ccat-api package
     """  

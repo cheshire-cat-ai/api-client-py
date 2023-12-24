@@ -5,7 +5,7 @@ from websocket import WebSocketApp
 from threading import Thread
 from cheshire_cat_api.api_client import ApiClient
 from cheshire_cat_api.configuration import Configuration
-from cheshire_cat_api.settings import Settings
+from cheshire_cat_api.config import Config
 from cheshire_cat_api.api import (
     EmbedderApi, LargeLanguageModelApi, MemoryApi, PluginsApi,
     RabbitHoleApi, SettingsApi, StatusApi
@@ -18,7 +18,7 @@ class CatClient:
     """
 
     def __init__(self,
-                 settings: Optional[Settings] = None,
+                 config: Optional[Config] = None,
                  on_open: Optional[Callable] = None,
                  on_close: Optional[Callable] = None,
                  on_message: Optional[Callable] = None,
@@ -32,7 +32,8 @@ class CatClient:
         self.on_open = on_open
 
         # Settings
-        self.settings = settings if settings is not None else Settings()
+        self._conn_settings = config if config is not None else Config()
+        # TODO: user_id should be automatically passed from settings to http endpoints
 
         self._ws = None
         self.memory = None
@@ -46,13 +47,13 @@ class CatClient:
         self._connect_api()
 
     def _connect_api(self):
-        protocol = "https" if self.settings.secure_connection else "http"
-        config = Configuration(host=f"{protocol}://{self.settings.base_url}")
+        protocol = "https" if self._conn_settings.secure_connection else "http"
+        config = Configuration(host=f"{protocol}://{self._conn_settings.base_url}")
 
         client = ApiClient(
             configuration=config,
             header_name='access_token',
-            header_value=self.settings.auth_key
+            header_value=self._conn_settings.auth_key
         )
         self.memory = MemoryApi(client)
         self.plugins = PluginsApi(client)
@@ -63,8 +64,8 @@ class CatClient:
         self.llm = LargeLanguageModelApi(client)
 
     def connect_ws(self):
-        protocol = "wss" if self.settings.secure_connection else "ws"
-        url = f"{protocol}://{self.settings.base_url}:{self.settings.port}/ws/{self.settings.user_id}"
+        protocol = "wss" if self._conn_settings.secure_connection else "ws"
+        url = f"{protocol}://{self._conn_settings.base_url}:{self._conn_settings.port}/ws/{self._conn_settings.user_id}"
 
         self._ws = WebSocketApp(
             url,
@@ -80,7 +81,7 @@ class CatClient:
     def on_ws_open(self, ws):
         """"Default message handler on connection opening"""
         
-        logging.info(f"Websocket connection established with id {self.settings.user_id}")
+        logging.info(f"Websocket connection established with id {self._conn_settings.user_id}")
 
         # Run user custom function
         if callable(self.on_open):
@@ -99,7 +100,7 @@ class CatClient:
     def on_ws_error(self, ws, error: Exception):
         """"Default message handler on WebSocket error"""
 
-        logging.exception(f"An error occurred in ws connection with id {self.settings.user_id}: {error}", exc_info=True)
+        logging.exception(f"An error occurred in ws connection with id {self._conn_settings.user_id}: {error}", exc_info=True)
 
         # Run user custom function
         if callable(self.on_error):
@@ -108,7 +109,7 @@ class CatClient:
     def on_ws_close(self, ws, status_code: int, msg: str):
         """"Default message handler on closed connection"""
 
-        logging.info(f"Connection with id {self.settings.user_id} closed with code {status_code}: {msg}")
+        logging.info(f"Connection with id {self._conn_settings.user_id} closed with code {status_code}: {msg}")
 
         # Run user custom function
         if callable(self.on_close):
@@ -131,7 +132,7 @@ class CatClient:
         self.conn.join()
 
     @property
-    def is_connected(self):
+    def is_ws_connected(self):
         if self._ws is None:
             return False
         
