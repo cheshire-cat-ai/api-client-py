@@ -129,6 +129,11 @@ class CatClient:
             }))
 
     def close(self):
+        
+        if self._ws is None:
+            logging.warning("Websocket connection is already close")
+            return
+            
         # Close connection
         self._ws.close()
         self.conn.join()
