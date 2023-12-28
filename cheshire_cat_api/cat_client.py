@@ -35,7 +35,6 @@ class CatClient:
         self._conn_settings = config if config is not None else Config()
         # TODO: user_id should be automatically passed from settings to http endpoints
 
-        self._ws = None
         self.memory = None
         self.plugins = None
         self.rabbit_hole = None
@@ -43,6 +42,8 @@ class CatClient:
         self.embedder = None
         self.settings = None
         self.llm = None
+
+        self._ws = None
 
         self._connect_api()
 
@@ -115,6 +116,7 @@ class CatClient:
         if callable(self.on_close):
             self.on_close(status_code, msg)
 
+
     def send(self, message: str, **kwargs):
         """Send a message to WebSocket server using a separate thread"""
 
@@ -127,13 +129,15 @@ class CatClient:
             }))
 
     def close(self):
+        
+        if self._ws is None:
+            logging.warning("Websocket connection is already close")
+            return
+            
         # Close connection
         self._ws.close()
         self.conn.join()
 
     @property
     def is_ws_connected(self):
-        if self._ws is None:
-            return False
-        
-        return self._ws.sock.connected
+        return self._ws and self._ws.sock and self._ws.sock.connected
