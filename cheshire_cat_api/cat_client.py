@@ -49,7 +49,7 @@ class CatClient:
 
     def _connect_api(self):
         protocol = "https" if self._conn_settings.secure_connection else "http"
-        config = Configuration(host=f"{protocol}://{self._conn_settings.base_url}")
+        config = Configuration(host=f"{protocol}://{self._conn_settings.base_url}:{self._conn_settings.port}")
 
         client = ApiClient(
             configuration=config,
