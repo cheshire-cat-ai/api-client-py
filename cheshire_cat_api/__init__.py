@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.1"
+__version__ = "1.4.8"
 
 from cheshire_cat_api.cat_client import CatClient
 from cheshire_cat_api.config import Config
