@@ -1,7 +1,7 @@
 site_name: The Cheshire Cat API Python Client
 repo_url: https://github.com/nicola-corbellini/api-client-py
 
-docs_dir: docs
+docs_dir: mkdocs
 site_dir: docs
 
 plugins:
