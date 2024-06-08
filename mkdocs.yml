@@ -2,7 +2,7 @@ site_name: The Cheshire Cat API Python Client
 repo_url: https://github.com/cheshire-cat-ai/api-client-py
 
 docs_dir: mkdocs
-site_dir: docs
+site_dir: api-client-py
 
 plugins:
   - mkdocs-video:

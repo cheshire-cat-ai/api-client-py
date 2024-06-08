@@ -22,7 +22,7 @@ jobs:
 
     - name: Build site 🏗️
       run: |
-        mkdocs build
+        mkdocs build --clean
 
     - name: Deploy to GitHub Pages 🚀
       uses: peaceiris/actions-gh-pages@v4
