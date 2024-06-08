@@ -126,7 +126,7 @@ from cheshire_cat_api import Config
 ## Low-level API
 
 For a more advanced usage, you can directly interact with the auto-generated client.
-For documentation see [here](docs/)
+For documentation see [here](mkdocs/)
 
 [//]: # (## Documentation for API Endpoints)
 

@@ -1,0 +1,33 @@
+name: Build and deploy mkdocs on gh-pages
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 4 * * 1' # Every Monday at 4:00 AM
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Build site 🏗️
+      run: |
+        mkdocs build
+
+    - name: Deploy to GitHub Pages 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.MKDOCS_TOKEN }}
+        publish_dir: ./mkdocs
+        publish_branch: gh-pages
+        force_orphan: true

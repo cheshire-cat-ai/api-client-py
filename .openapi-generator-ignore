@@ -17,10 +17,10 @@
 # This matches foo/bar/qux, foo/baz/qux, and foo/bar/baz/qux
 
 # You can also negate patterns with an exclamation (!).
-# For example, you can ignore all files in a docs folder with the file extension .md:
-#docs/*.md
+# For example, you can ignore all files in a mkdocs folder with the file extension .md:
+#mkdocs/*.md
 # Then explicitly reverse the ignore rule for a single file:
-#!docs/README.md
+#!mkdocs/README.md
 
 .github/
 cheshire_cat_api/cat_client.py
