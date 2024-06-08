@@ -1,5 +1,5 @@
 # Cheshire Cat API client
-API to develop Python clients to interact with the Cheshire Cat.
+API to develop Python clients to interact with the Cheshire Cat. 
 
 The package allows instantiating a [WebSocket](#documentation-for-websocket) client and provides the API to interact with all the [endpoints](#documentation-for-api-endpoints).
 
