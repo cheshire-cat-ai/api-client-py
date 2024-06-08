@@ -57,7 +57,7 @@ venv/
 *.log
 
 # Sphinx documentation
-docs/_build/
+mkdocs/_build/
 
 # PyBuilder
 target/
