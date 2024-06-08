@@ -1,3 +1,3 @@
-# Cheshire Cat AI API Python Client
+# Cheshire Cat AI Python Client
 
 Coming soon...
