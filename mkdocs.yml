@@ -28,8 +28,10 @@ plugins:
 #  - mkdocs/hooks/drawio_file.py
 
 nav:
-  - Hello, dear: index.md
-  - API: API_Reference/
+  - Getting started:
+      - Installation: getting_started/installation.md
+      - Usage: getting_started/examples.md
+  - API Documentation: API_Documentation/
 
 theme:
   name: material

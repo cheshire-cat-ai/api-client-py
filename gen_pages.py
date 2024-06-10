@@ -5,13 +5,6 @@ import os
 import fnmatch
 import mkdocs_gen_files
 
-KEEP_PAGES = [
-    "cheshire_cat", "stray_cat", "agent", "flow",
-    "prompt", "rabbithole", "settings", "mad_hatter",
-    "plugin", "vector_memory", "vector_memory_collection",
-    "working_memory", "log", "rabbit_hole", "utils",  # "__init__"
-]
-
 nav = mkdocs_gen_files.Nav()
 
 core_code_dir = 'cheshire_cat_api'
@@ -26,7 +19,7 @@ for path in paths:
 
     module_path = path.relative_to(core_code_dir).with_suffix("")
     doc_path = path.relative_to(core_code_dir).with_suffix(".md")
-    full_doc_path = Path("API_Reference", doc_path)
+    full_doc_path = Path("API_Documentation", doc_path)
 
     parts = tuple(module_path.parts)
 
@@ -48,7 +41,7 @@ for path in paths:
 
     mkdocs_gen_files.set_edit_path(full_doc_path, path)
 
-with mkdocs_gen_files.open("API_Reference/SUMMARY.md", "w") as nav_file:  #
+with mkdocs_gen_files.open("API_Documentation/SUMMARY.md", "w") as nav_file:  #
     if os.path.exists(core_code_dir):
         nav_file.writelines(nav.build_literate_nav())  #
     else:
