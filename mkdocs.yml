@@ -11,25 +11,25 @@ plugins:
       video_autoplay: False
       video_type: mp4
   - search
-#  - gen-files:
-#      scripts:
-#        - gen_pages.py
-#  - literate-nav:
-#      nav_file: SUMMARY.md
+  - gen-files:
+      scripts:
+        - gen_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
   - section-index
   - mkdocstrings:
       handlers:
         python:
-          paths: [mkdocs/API_reference]
+          paths: [.]
           options:
-            docstring_style: numpy
+            docstring_style: sphinx
 
 #hooks:
 #  - mkdocs/hooks/drawio_file.py
 
 nav:
   - Hello, dear: index.md
-
+  - API: API_Reference/
 #  - Quickstart:
 #      - Introduction: quickstart/introduction.md
 #      - Installation and First Configuration: quickstart/installation-configuration.md
