@@ -3,6 +3,7 @@ import logging
 from typing import Callable, Optional
 from websocket import WebSocketApp
 from threading import Thread
+from urllib.parse import quote
 from cheshire_cat_api.api_client import ApiClient
 from cheshire_cat_api.configuration import Configuration
 from cheshire_cat_api.config import Config
@@ -64,9 +65,12 @@ class CatClient:
         self.settings = SettingsApi(client)
         self.llm = LargeLanguageModelApi(client)
 
-    def connect_ws(self):
+    def connect_ws(self, token=None):
         protocol = "wss" if self._conn_settings.secure_connection else "ws"
+        self.token = token
         url = f"{protocol}://{self._conn_settings.base_url}:{self._conn_settings.port}/ws/{self._conn_settings.user_id}"
+        if token:
+            url += f"?token={quote(token)}"
 
         self._ws = WebSocketApp(
             url,
