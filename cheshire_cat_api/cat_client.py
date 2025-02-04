@@ -3,7 +3,6 @@ import logging
 from typing import Callable, Optional
 from websocket import WebSocketApp
 from threading import Thread
-from urllib.parse import quote
 from cheshire_cat_api.api_client import ApiClient
 from cheshire_cat_api.configuration import Configuration
 from cheshire_cat_api.config import Config
