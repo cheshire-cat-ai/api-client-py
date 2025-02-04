@@ -65,12 +65,11 @@ class CatClient:
         self.settings = SettingsApi(client)
         self.llm = LargeLanguageModelApi(client)
 
-    def connect_ws(self, token=None):
+    def connect_ws(self):
         protocol = "wss" if self._conn_settings.secure_connection else "ws"
-        self.token = token
         url = f"{protocol}://{self._conn_settings.base_url}:{self._conn_settings.port}/ws/{self._conn_settings.user_id}"
-        if token:
-            url += f"?token={quote(token)}"
+        if self._conn_settings.auth_key:
+            url += f"?token={self._conn_settings.auth_key}"
 
         self._ws = WebSocketApp(
             url,
