@@ -301,6 +301,7 @@ class RabbitHoleApi:
         file: Union[StrictBytes, StrictStr],
         chunk_size: Annotated[Optional[StrictInt], Field(description="Maximum length of each chunk after the document is split (in characters)")] = None,
         chunk_overlap: Annotated[Optional[StrictInt], Field(description="Chunk overlap (in characters)")] = None,
+        metadata: Optional[Dict[StrictStr, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -324,6 +325,8 @@ class RabbitHoleApi:
         :type chunk_size: int
         :param chunk_overlap: Chunk overlap (in characters)
         :type chunk_overlap: int
+        :param metadata: add metadata to the document
+        :type metadata dict, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -350,6 +353,7 @@ class RabbitHoleApi:
             file=file,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            metadata=metadata,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -378,6 +382,7 @@ class RabbitHoleApi:
         file: Union[StrictBytes, StrictStr],
         chunk_size: Annotated[Optional[StrictInt], Field(description="Maximum length of each chunk after the document is split (in characters)")] = None,
         chunk_overlap: Annotated[Optional[StrictInt], Field(description="Chunk overlap (in characters)")] = None,
+        metadata: Optional[Dict[StrictStr, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -401,6 +406,8 @@ class RabbitHoleApi:
         :type chunk_size: int
         :param chunk_overlap: Chunk overlap (in characters)
         :type chunk_overlap: int
+        :param metadata: add metadata to the document
+        :type metadata dict, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -427,6 +434,7 @@ class RabbitHoleApi:
             file=file,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            metadata=metadata,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -455,6 +463,7 @@ class RabbitHoleApi:
         file: Union[StrictBytes, StrictStr],
         chunk_size: Annotated[Optional[StrictInt], Field(description="Maximum length of each chunk after the document is split (in characters)")] = None,
         chunk_overlap: Annotated[Optional[StrictInt], Field(description="Chunk overlap (in characters)")] = None,
+        metadata: Optional[Dict[StrictStr, StrictStr]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -478,6 +487,8 @@ class RabbitHoleApi:
         :type chunk_size: int
         :param chunk_overlap: Chunk overlap (in characters)
         :type chunk_overlap: int
+        :param metadata: add metadata to the document
+        :type metadata dict, optional
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -504,6 +515,7 @@ class RabbitHoleApi:
             file=file,
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
+            metadata=metadata,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -527,6 +539,7 @@ class RabbitHoleApi:
         file,
         chunk_size,
         chunk_overlap,
+        metadata,
         _request_auth,
         _content_type,
         _headers,
@@ -556,6 +569,8 @@ class RabbitHoleApi:
             _form_params.append(('chunk_size', chunk_size))
         if chunk_overlap is not None:
             _form_params.append(('chunk_overlap', chunk_overlap))
+        if metadata is not None:
+            _form_params.append(('metadata', metadata))
         # process the body parameter
 
 
